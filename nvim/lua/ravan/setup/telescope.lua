@@ -14,5 +14,11 @@ require('telescope').setup({
             override_file_sorter = true, -- override the file sorter
             case_mode = 'smart_case', -- "smart_case" | "ignore_case" | "respect_case"
         },
+        media_files = {
+            -- filetypes whitelist
+            -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+        }
     },
 })
+
+

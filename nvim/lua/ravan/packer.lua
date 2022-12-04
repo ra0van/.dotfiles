@@ -1,5 +1,5 @@
 -- Only required if you have packer configured as `opt`
-vim.cmd([[packadd packer.nvim]])
+--vim.cmd([[packadd packer.nvim]])
 
 return require("packer").startup({
     function(use)
@@ -63,7 +63,40 @@ return require("packer").startup({
                 'nvim-telescope/telescope-symbols.nvim',
                 after = 'telescope.nvim',
             },
+            {
+                'nvim-telescope/telescope-media-files.nvim',
+                after = 'telescope.nvim',
+                config = function()
+                    require('ravan.setup.telescope')
+                end,
+            },
         })
+
+        --- Markdown preview plugin--
+        use ({
+            "iamcco/markdown-preview.nvim",
+            run = function() vim.fn["mkdp#util#install"]() end,
+        })
+
+        -- Treesitter: Better Highlights --
+        -----------------------------------
+
+        use({
+            {
+                'nvim-treesitter/nvim-treesitter',
+                event = 'CursorHold',
+                run = ':TSUpdate',
+                config = function()
+                    require('ravan.setup.treesitter')
+                end,
+            },
+            { 'nvim-treesitter/playground', after = 'nvim-treesitter' },
+            { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },
+            { 'nvim-treesitter/nvim-treesitter-refactor', after = 'nvim-treesitter' },
+            { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' },
+            { 'JoosepAlviste/nvim-ts-context-commentstring', after = 'nvim-treesitter' },
+        })
+
     end,
 })
 --

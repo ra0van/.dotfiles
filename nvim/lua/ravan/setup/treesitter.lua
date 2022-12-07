@@ -64,40 +64,7 @@ require('nvim-treesitter.configs').setup({
                 -- },
             },
         },
-        swap = {
-            enable = true,
-            swap_next = {
-                ['<leader>a'] = '@parameter.inner',
-                ['<leader>f'] = '@function.outer',
-                ['<leader>e'] = '@element',
-            },
-            swap_previous = {
-                ['<leader>A'] = '@parameter.inner',
-                ['<leader>F'] = '@function.outer',
-                ['<leader>E'] = '@element',
-            },
-        },
-        move = {
-            enable = true,
-            set_jumps = true, -- whether to set jumps in the jumplist
-            goto_next_start = {
-                [']f'] = '@function.outer',
-                [']]'] = '@class.outer',
-            },
-            goto_next_end = {
-                [']F'] = '@function.outer',
-                [']['] = '@class.outer',
-            },
-            goto_previous_start = {
-                ['[f'] = '@function.outer',
-                ['[['] = '@class.outer',
-            },
-            goto_previous_end = {
-                ['[F'] = '@function.outer',
-                ['[]'] = '@class.outer',
-            },
-        },
-    },
+   },
     -- windwp/nvim-ts-autotag
     autotag = {
         enable = true,

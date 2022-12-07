@@ -1,4 +1,4 @@
--- Only required if you have packer configured as `opt`
+-- Only required if you have packer configured as `opt`packer
 --vim.cmd([[packadd packer.nvim]])
 
 return require("packer").startup({
@@ -89,6 +89,7 @@ return require("packer").startup({
                 config = function()
                     require('ravan.setup.treesitter')
                 end,
+                requires = {'nvim-treesitter/playground'}
             },
             { 'nvim-treesitter/playground', after = 'nvim-treesitter' },
             { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },

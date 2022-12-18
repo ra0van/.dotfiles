@@ -98,6 +98,8 @@ return require("packer").startup({
             { 'JoosepAlviste/nvim-ts-context-commentstring', after = 'nvim-treesitter' },
         })
 
+        -- undo tree--
+        use('mbbill/undotree')
+        use('tpope/vim-fugitive')
     end,
 })
---

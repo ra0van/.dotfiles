@@ -1,8 +1,8 @@
 require('lualine').setup({
     options = {
         theme = 'sakura',
-        component_separators = '',
-        section_separators = '',
+        section_separators = { left = '', right = ''},
+        component_separators = { left = '', right = ''},
         icons_enabled = true,
         globalstatus = true,
     },
@@ -12,16 +12,18 @@ require('lualine').setup({
         },
         lualine_b = {
             { 'branch' },
-            { 'diff', colored = false },
+            { 'diff', colored = true},
         },
         lualine_c = {
             { 'filename', file_status = true },
             { 'diagnostics' },
         },
         lualine_x = {
+            "os.date()",
             'filetype',
             'encoding',
             'fileformat',
+            'filesize',
         },
         lualine_y = { 'progress' },
         lualine_z = {

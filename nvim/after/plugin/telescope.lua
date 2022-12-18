@@ -2,8 +2,10 @@ local nnoremap = require("ravan.keymap").nnoremap
 
 local builtin = require("telescope.builtin")
 
-nnoremap("<leader>ff", function() builtin.find_files() end)
---nnoremap("<leader>fg", function() builtin.live_grep() end)
+nnoremap("<leader>pf", function() builtin.find_files() end)
+nnoremap("<C-p>", function() builtin.git_files() end)
+nnoremap("<leader>ps", function() 
+    builtin.grep_string({ search = vim.fn.input("Grep > ") })
+end)
 
-require('telescope').load_extension('media_files')
 

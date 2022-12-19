@@ -41,3 +41,5 @@ o.splitbelow = true
 o.hlsearch = false
 o.incsearch = true
 
+o.ignorecase = true
+o.smartcase = true

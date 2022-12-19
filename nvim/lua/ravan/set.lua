@@ -29,6 +29,7 @@ o.backup = false
 o.writebackup = false
 o.undofile = true
 o.swapfile = false
+o.undodir = os.getenv("HOME") .. "/.vim/undodir"
 
 -- Remember 50 items in commandline history
 o.history = 50
@@ -36,4 +37,7 @@ o.history = 50
 --Better buffer splitting
 o.splitright = true
 o.splitbelow = true
+
+o.hlsearch = false
+o.incsearch = true
 

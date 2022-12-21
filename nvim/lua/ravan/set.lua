@@ -1,4 +1,5 @@
 local o = vim.o
+local wo = vim.wo
 
 
 -- Number of screen lines to keep above and below the cursor
@@ -14,7 +15,7 @@ o.cursorline = true
 -- Better editiing experience
 o.expandtab = true
 o.cindent = true
-o.wrap = true
+wo.wrap = true
 o.textwidth = 300
 o.tabstop = 4
 o.shiftwidth = 0

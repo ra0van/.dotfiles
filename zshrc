@@ -1,13 +1,9 @@
 CONFIGS=$HOME/base/.dotfiles
 
 source $CONFIGS/zsh/init.sh
-
-# FILES=$HOME/dev/configs/zshrc/
-# for FILE in $FILES/*; do
-# for FILE in $FILES[@]; do
-for FILE in $FILES; do
-    source $FILE
-done
+source $CONFIGS/zsh/path.sh
+source $CONFIGS/zsh/alias.sh
+source $CONFIGS/zsh/rzp.sh
 
 
 

@@ -38,7 +38,7 @@ o.history = 50
 o.splitright = true
 o.splitbelow = true
 
-o.hlsearch = false
+o.hlsearch = true
 o.incsearch = true
 
 o.ignorecase = true

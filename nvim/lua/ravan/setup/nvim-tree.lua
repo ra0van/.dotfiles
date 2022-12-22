@@ -9,6 +9,7 @@ require('nvim-tree').setup({
         width = 35,
         side = 'left',
         number = true,
+        adaptive_size = true,
         relativenumber = true,
     },
     filters = {
@@ -33,15 +34,15 @@ require('nvim-tree').setup({
                 folder_arrow = true
             },
             glyphs = {
-                default = '[]',
-                git = {
-                    unstaged = '~',
-                    staged = '+',
-                    unmerged = '!',
-                    renamed = '≈',
-                    untracked = '?',
-                    deleted = '-',
-                },
+                -- default = '[]',
+                -- git = {
+                --     unstaged = '~',
+                --     staged = '+',
+                --     unmerged = '!',
+                --     renamed = '≈',
+                --     untracked = '?',
+                --     deleted = '-',
+                -- },
             },
         },
         indent_markers = {

@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["NeoSolarized.nvim"] = {
+    loaded = true,
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/NeoSolarized.nvim",
+    url = "https://github.com/Tsuzat/NeoSolarized.nvim"
+  },
   ["Sakura.nvim"] = {
     loaded = true,
     path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/Sakura.nvim",
@@ -123,6 +128,11 @@ _G.packer_plugins = {
     path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["gruvbox.nvim"] = {
+    loaded = true,
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
+  },
   harpoon = {
     loaded = true,
     path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/harpoon",
@@ -158,6 +168,11 @@ _G.packer_plugins = {
     path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["material.nvim"] = {
+    loaded = true,
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/material.nvim",
+    url = "https://github.com/marko-cerovac/material.nvim"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -175,7 +190,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-tree/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
-    after = { "nvim-ts-context-commentstring", "nvim-treesitter-textobjects", "nvim-ts-autotag", "playground", "nvim-treesitter-refactor" },
+    after = { "nvim-treesitter-refactor", "nvim-ts-autotag", "nvim-treesitter-textobjects", "nvim-ts-context-commentstring", "playground" },
     config = { "\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27ravan.setup.treesitter\frequire\0" },
     loaded = false,
     needs_bufread = false,
@@ -244,6 +259,11 @@ _G.packer_plugins = {
     path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  spaceduck = {
+    loaded = true,
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/spaceduck",
+    url = "https://github.com/pineapplegiant/spaceduck"
+  },
   ["telescope-fzf-native.nvim"] = {
     config = { "\27LJ\2\nH\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\bfzf\19load_extension\14telescope\frequire\0" },
     load_after = {},
@@ -268,7 +288,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-telescope/telescope-symbols.nvim"
   },
   ["telescope.nvim"] = {
-    after = { "telescope-media-files.nvim", "telescope-symbols.nvim", "telescope-fzf-native.nvim" },
+    after = { "telescope-fzf-native.nvim", "telescope-media-files.nvim", "telescope-symbols.nvim" },
     config = { "\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26ravan.setup.telescope\frequire\0" },
     loaded = true,
     only_config = true,
@@ -288,10 +308,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26ravan.setup.telescope\frequire\0", "config", "telescope.nvim")
-time([[Config for telescope.nvim]], false)
 -- Config for: nvim-web-devicons
 time([[Config for nvim-web-devicons]], true)
 try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22nvim-web-devicons\frequire\0", "config", "nvim-web-devicons")
@@ -300,27 +316,31 @@ time([[Config for nvim-web-devicons]], false)
 time([[Config for nvim-tree.lua]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26ravan.setup.nvim-tree\frequire\0", "config", "nvim-tree.lua")
 time([[Config for nvim-tree.lua]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26ravan.setup.telescope\frequire\0", "config", "telescope.nvim")
+time([[Config for telescope.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
-vim.cmd [[ packadd Sakura.nvim ]]
+vim.cmd [[ packadd gruvbox.nvim ]]
+vim.cmd [[ packadd telescope-media-files.nvim ]]
+
+-- Config for: telescope-media-files.nvim
+try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26ravan.setup.telescope\frequire\0", "config", "telescope-media-files.nvim")
+
 vim.cmd [[ packadd telescope-symbols.nvim ]]
 vim.cmd [[ packadd telescope-fzf-native.nvim ]]
 
 -- Config for: telescope-fzf-native.nvim
 try_loadstring("\27LJ\2\nH\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\bfzf\19load_extension\14telescope\frequire\0", "config", "telescope-fzf-native.nvim")
 
-vim.cmd [[ packadd telescope-media-files.nvim ]]
-
--- Config for: telescope-media-files.nvim
-try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26ravan.setup.telescope\frequire\0", "config", "telescope-media-files.nvim")
-
 time([[Sequenced loading]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au CursorHold * ++once lua require("packer.load")({'nvim-treesitter'}, { event = "CursorHold *" }, _G.packer_plugins)]]
 vim.cmd [[au BufEnter * ++once lua require("packer.load")({'lualine.nvim'}, { event = "BufEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au CursorHold * ++once lua require("packer.load")({'nvim-treesitter'}, { event = "CursorHold *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 

@@ -44,3 +44,5 @@ o.incsearch = true
 
 o.ignorecase = true
 o.smartcase = true
+
+o.termguicolors = true

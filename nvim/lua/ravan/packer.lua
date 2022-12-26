@@ -20,11 +20,16 @@ return require("packer").startup({
         })
 
         use('numToStr/Sakura.nvim')
+        use("ellisonleao/gruvbox.nvim")
+        use('Tsuzat/NeoSolarized.nvim')
+        use('marko-cerovac/material.nvim')
+        use('pineapplegiant/spaceduck')
+
 
         use({
             {
                 'nvim-lualine/lualine.nvim',
-                after = 'Sakura.nvim',
+                after = 'gruvbox.nvim',
                 event = 'BufEnter',
                 config = function()
                     require('ravan.setup.lualine')

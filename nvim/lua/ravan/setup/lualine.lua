@@ -1,6 +1,6 @@
 require('lualine').setup({
     options = {
-        theme = 'sakura',
+        theme = 'spaceduck',
         section_separators = { left = '', right = ''},
         component_separators = { left = '', right = ''},
         icons_enabled = true,
@@ -8,7 +8,12 @@ require('lualine').setup({
     },
     sections = {
         lualine_a = {
-            { 'mode', color = { gui = 'bold' } },
+            { 'mode',
+                color = {
+                    gui = 'bold'
+                }
+            },
+
         },
         lualine_b = {
             { 'branch' },
@@ -19,9 +24,9 @@ require('lualine').setup({
             { 'diagnostics' },
         },
         lualine_x = {
-            "os.date()",
+            --"os.date()",
             'filetype',
-            'encoding',
+            --'encoding',
             'fileformat',
             'filesize',
         },
@@ -34,6 +39,8 @@ require('lualine').setup({
         lualine_a = {
             {
                 'buffers',
+                show_filename_only = true,
+                mode = 2,
                 buffers_color = { active = 'lualine_b_normal' },
             },
         },

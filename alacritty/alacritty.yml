@@ -1,0 +1,76 @@
+window:
+  dimensions:
+    columns: 150
+    lines: 50
+
+  padding:
+    x: 0
+    y: 0
+
+  dynamic_padding: false
+
+  decorations: buttonless
+
+  startup_mode: Windowed
+
+  opacity: 0.95
+
+scrolling:
+  history: 0
+
+
+font:
+    normal : 
+      family: Hack Nerd Font
+      style: Regular
+
+    bold:
+      family: Hack Nerd Font
+      style: Regular 
+
+    italic:
+      family: Hack Nerd Font
+      style: Italic
+    size: 14.0
+
+    offset:
+      x: 0
+      y: 0
+
+      x: 0
+      y: 0
+
+# When true, bold text is drawn using the bright variant of colors.
+draw_bold_text_with_bright_colors: false
+
+# Use custom cursor colors. If true, display the cursor in the cursor.foreground
+# and cursor.background colors, otherwise invert the colors of the cursor.
+custom_cursor_colors: true
+
+# Space Duck
+colors:
+  # Default colors
+  primary:
+    background: '#0f111b'
+    foreground: '#ecf0c1'
+  # Normal colors
+  normal:
+    black:   '#000000'
+    red:     '#e33400'
+    green:   '#5ccc96'
+    yellow:  '#b3a1e6'
+    blue:    '#00a3cc'
+    magenta: '#f2ce00'
+    cyan:    '#7a5ccc'
+    white:   '#686f9a'
+
+  # Bright colors
+  bright:
+    black:   '#686f9a'
+    red:     '#e33400'
+    green:   '#5ccc96'
+    yellow:  '#b3a1e6'
+    blue:    '#00a3cc'
+    magenta: '#f2ce00'
+    cyan:    '#7a5ccc'
+    white:   '#f0f1ce'

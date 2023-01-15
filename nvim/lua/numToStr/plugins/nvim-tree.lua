@@ -8,9 +8,6 @@ require('nvim-tree').setup({
     view = {
         width = 35,
         side = 'left',
-        number = true,
-        adaptive_size = true,
-        relativenumber = true,
     },
     filters = {
         custom = { '.git$', 'node_modules$', '^target$' },
@@ -31,22 +28,32 @@ require('nvim-tree').setup({
                 git = true,
                 folder = true,
                 file = true,
-                folder_arrow = true
+                folder_arrow = false,
             },
             glyphs = {
-                -- default = '[]',
-                -- git = {
-                --     unstaged = '~',
-                --     staged = '+',
-                --     unmerged = '!',
-                --     renamed = '≈',
-                --     untracked = '?',
-                --     deleted = '-',
-                -- },
+                default = '',
+                git = {
+                    unstaged = '~',
+                    staged = '+',
+                    unmerged = '!',
+                    renamed = '≈',
+                    untracked = '?',
+                    deleted = '-',
+                },
             },
         },
         indent_markers = {
             enable = true,
         },
     },
+})
+
+vim.keymap.set('n', '<C-n>', '<CMD>NvimTreeToggle<CR>')
+
+vim.api.nvim_create_autocmd('FileType', {
+    group = vim.api.nvim_create_augroup('NVIM_TREE', { clear = true }),
+    pattern = 'NvimTree',
+    callback = function()
+        vim.api.nvim_win_set_option(0, 'wrap', false)
+    end,
 })

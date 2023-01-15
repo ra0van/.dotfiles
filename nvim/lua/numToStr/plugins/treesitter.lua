@@ -1,3 +1,8 @@
+-- Treesitter folds
+-- vim.o.foldmethod = 'expr'
+-- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+-- vim.o.foldlevelstart = 99
+
 require('nvim-treesitter.configs').setup({
     -- nvim-treesitter/nvim-treesitter (self config)
     auto_install = true,
@@ -64,7 +69,40 @@ require('nvim-treesitter.configs').setup({
                 -- },
             },
         },
-   },
+        swap = {
+            enable = true,
+            swap_next = {
+                ['<leader>a'] = '@parameter.inner',
+                ['<leader>f'] = '@function.outer',
+                ['<leader>e'] = '@element',
+            },
+            swap_previous = {
+                ['<leader>A'] = '@parameter.inner',
+                ['<leader>F'] = '@function.outer',
+                ['<leader>E'] = '@element',
+            },
+        },
+        move = {
+            enable = true,
+            set_jumps = true, -- whether to set jumps in the jumplist
+            goto_next_start = {
+                [']f'] = '@function.outer',
+                [']]'] = '@class.outer',
+            },
+            goto_next_end = {
+                [']F'] = '@function.outer',
+                [']['] = '@class.outer',
+            },
+            goto_previous_start = {
+                ['[f'] = '@function.outer',
+                ['[['] = '@class.outer',
+            },
+            goto_previous_end = {
+                ['[F'] = '@function.outer',
+                ['[]'] = '@class.outer',
+            },
+        },
+    },
     -- windwp/nvim-ts-autotag
     autotag = {
         enable = true,
@@ -75,18 +113,6 @@ require('nvim-treesitter.configs').setup({
         disable = {},
         updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
         persist_queries = false, -- Whether the query persists across vim sessions
-        keybindings = {
-            toggle_query_editor = 'o',
-            toggle_hl_groups = 'i',
-            toggle_injected_languages = 't',
-            toggle_anonymous_nodes = 'a',
-            toggle_language_display = 'I',
-            focus_language = 'f',
-            unfocus_language = 'F',
-            update = 'R',
-            goto_node = '<cr>',
-            show_help = '?',
-        },
     },
     -- nvim-treesitter/nvim-treesitter-refactor
     refactor = {

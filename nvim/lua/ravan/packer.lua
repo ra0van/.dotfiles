@@ -19,12 +19,13 @@ return require("packer").startup({
             end,
         })
 
-        use('numToStr/Sakura.nvim')
-        use("ellisonleao/gruvbox.nvim")
-        use('Tsuzat/NeoSolarized.nvim')
-        use('marko-cerovac/material.nvim')
+        use{'numToStr/Sakura.nvim', opt = true}
+        use{"ellisonleao/gruvbox.nvim", opt = true}
+        use{'Tsuzat/NeoSolarized.nvim', opt = true}
+        use{'marko-cerovac/material.nvim', opt = true}
         use('pineapplegiant/spaceduck')
-
+        
+        use{'dstein64/vim-startuptime', opt = true, cmd = 'StartupTime'}
 
         use({
             {
@@ -130,4 +131,5 @@ return require("packer").startup({
             }
         }
     end,
+
 })

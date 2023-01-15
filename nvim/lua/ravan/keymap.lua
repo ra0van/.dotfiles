@@ -16,3 +16,4 @@ M.buf_vnoremap = bind("v", {buffer = 0})
 M.buf_inoremap = bind("i", {buffer = 0})
 
 return M
+

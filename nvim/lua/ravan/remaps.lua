@@ -4,18 +4,24 @@ local nnoremap = keymap.nnoremap;
 local vnoremap = keymap.vnoremap;
 local inoremap = keymap.inoremap;
 
-vim.g.mapleader = " ";
-nnoremap("<leader>pv", "<cmd>ex<cr>");
+-- nnoremap("<leader>pv", "<cmd>ex<cr>");
 
 vnoremap("J", ":m '>+1<cr>gv=gv");
 vnoremap("K", ":m '<-2<cr>gv=gv");
 
--- vim.keymap.set("n", "J", "mzJ`z")
-
 -- Easy buffer switching
-nnoremap("<leader>b", ":ls<CR>:b<Space>")
-nnoremap("<leader><tab>", ":bnext<CR>")
-nnoremap("<leader><tab><tab>", ":bprevious<CR>")
+nnoremap("<leader>b<Space>", ":ls<cr>:b<Space>")
+nnoremap("<leader>bb", ":bnext<cr>")
+nnoremap("<leader>bp", ":bprevious<cr>")
+nnoremap('<leader>bd', '<cmd>bdel<cr>')
+nnoremap('<leader>bD', '<cmd>bdel!<cr>')
+nnoremap('<leader>bnw', '<cmd>new<cr>')
+nnoremap('<leader>bv', '<cmd>vnew<cr>')
+nnoremap('<leader>bc', '<cmd>tabp<cr>')
+nnoremap('<leader>br', '<cmd>tabn<cr>')
+nnoremap('<leader>bs', '<cmd>w<cr>')
+nnoremap('<leader>bS', '<cmd>w!<cr>')
+nnoremap('<leader>bt', '<cmd>tabnew<cr>')
 
 inoremap('jk', '<ESC>')
 inoremap('jk', '<ESC>')

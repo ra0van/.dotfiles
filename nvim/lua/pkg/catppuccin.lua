@@ -44,7 +44,7 @@ return {
       highlight_overrides = {},
     }
 
-    vim.cmd('colorscheme catppuccin')
-    require 'colorscheme'
+    --vim.cmd('colorscheme catppuccin')
+    -- require 'colorscheme'
   end
 }

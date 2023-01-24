@@ -8,5 +8,5 @@ function ColorMyPencils(color)
 end
 
 vim.g.material_style = "darker"
---ColorMyPencils("spaceduck")
+ColorMyPencils("kanagawa")
 

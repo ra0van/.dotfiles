@@ -28,7 +28,7 @@ function M.create_highlights()
   set_hl('StatusLineHitEnterPromptMode', { link = 'Statusline'})
 end
 
-vim.api.nvim_command('augroup phaazon')
+--vim.api.nvim_command('augroup ravan')
 vim.api.nvim_command('  au!')
 vim.api.nvim_command([[  au ColorScheme * lua require'statusline'.create_highlights()]])
 vim.api.nvim_command('augroup END')

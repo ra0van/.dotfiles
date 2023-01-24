@@ -3,8 +3,8 @@ return {
   -- ['tjdevries/colorbuddy.vim']                 = 'colorbuddy',
   -- ['sainnhe/edge']                             = 'edge',
   -- ['SmiteshP/nvim-gps']                        = 'nvim-gps',
-  ['phaazon/hop.nvim']                           = 'hop',
-  ['phaazon/mind.nvim']                          = 'mind',
+  -- ['phaazon/hop.nvim']                           = 'hop',
+  -- ['phaazon/mind.nvim']                          = 'mind',
   -- ['phaazon/notisys.nvim']                     = 'notisys',
   ['windwp/nvim-autopairs']                    = 'autopairs',
   ['numToStr/Comment.nvim']                    = 'comment',
@@ -16,7 +16,7 @@ return {
   ['hrsh7th/cmp-buffer']                       = 'cmp-buffer',
   ['hrsh7th/cmp-nvim-lsp']                     = 'cmp-lsp',
   ['hrsh7th/cmp-nvim-lsp-signature-help']      = 'cmp-lsp-signature-help',
-  -- ['hrsh7th/cmp-path']                         = 'cmp-path',
+  ['hrsh7th/cmp-path']                         = 'cmp-path',
   ['hrsh7th/cmp-nvim-lua']                     = 'cmp-lua',
   ['dcampos/cmp-snippy']                       = 'cmp-snippy',
   -- ['petertriho/cmp-git']                       = 'cmp-git',
@@ -41,7 +41,7 @@ return {
   -- ['tpope/vim-fugitive']                       = 'fugitive',
   ['lewis6991/gitsigns.nvim']                  = 'gitsigns',
   ['folke/trouble.nvim']                       = 'trouble',
-  -- ['rmagatti/goto-preview']                    = 'goto-preview',
+  ['rmagatti/goto-preview']                    = 'goto-preview',
   ['simrat39/symbols-outline.nvim']            = 'symbols-outline',
   -- ['stevearc/aerial.nvim']                     = 'aerial',
   ['folke/persistence.nvim']                   = 'persistence',
@@ -68,5 +68,6 @@ return {
   ['theprimeagen/harpoon']                     = 'harpoon',
   ['dstein64/vim-startuptime']                 = 'startuptime',
   ['mbbill/undotree']                          = 'undotree',
-  ['pineapplegiant/spaceduck']                 = 'spaceduck'
+  -- ['pineapplegiant/spaceduck']                 = 'spaceduck'
+  ['VonHeikemen/lsp-zero.nvim']                = 'lsp-zero'
 }

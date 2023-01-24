@@ -39,15 +39,39 @@ return {
             { key = { "q" },      cb = tree_cb("close") },
           },
         }
-      }
-    }
+      },
+	  renderer = {
+		icons = {
+		  show = {
+			git = true,
+			folder = true,
+			file = true,
+			folder_arrow = true
+		  },
+		  glyphs = {
+			-- default = '[]',
+			-- git = {
+			--     unstaged = '~',
+			--     staged = '+',
+			--     unmerged = '!',
+			--     renamed = '≈',
+			--     untracked = '?',
+			--     deleted = '-',
+			-- },
+		  },
+		},
+		indent_markers = {
+		  enable = true,
+		},
+	  }
+	}
   end,
   keybindings = {
-    n = {
-      {
-        key = '<leader>ft',
-        cmd = 'NvimTreeToggle',
-      },
-    }
+	n = {
+	  {
+		key = '<C-n>',
+		cmd = 'NvimTreeToggle',
+	  },
+	}
   }
 }

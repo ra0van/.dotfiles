@@ -15,7 +15,7 @@ return {
             ["<c-s>"] = actions.move_selection_previous,
             ["<c-t>"] = actions.move_selection_next,
             ["<tab>"] = actions.add_selection,
-            ["<esc>"] = actions.close,
+            --["<esc>"] = actions.close,
           },
         },
       },

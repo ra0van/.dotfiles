@@ -145,4 +145,4 @@ require'packer'.startup(function(use)
   end
 end)
 
-require("ravan/remaps")
+require('remaps')

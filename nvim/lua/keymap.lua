@@ -3,7 +3,7 @@ function bind(mode, outer_opts)
 		opts = vim.tbl_extend("force", {}, outer_ops or {}, opts or {})
 		vim.keymap.set(mode, lhs, rhs, opts)
 	end
-end	
+end
 
 local M = {}
 

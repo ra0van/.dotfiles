@@ -74,22 +74,10 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  LuaSnip = {
+  ["Comment.nvim"] = {
     loaded = true,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/LuaSnip",
-    url = "https://github.com/L3MON4D3/LuaSnip"
-  },
-  ["NeoSolarized.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/opt/NeoSolarized.nvim",
-    url = "https://github.com/Tsuzat/NeoSolarized.nvim"
-  },
-  ["Sakura.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/opt/Sakura.nvim",
-    url = "https://github.com/numToStr/Sakura.nvim"
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/Comment.nvim",
+    url = "https://github.com/numToStr/Comment.nvim"
   },
   ["cmp-buffer"] = {
     loaded = true,
@@ -101,6 +89,11 @@ _G.packer_plugins = {
     path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["cmp-nvim-lsp-signature-help"] = {
+    loaded = true,
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp-signature-help",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp-signature-help"
+  },
   ["cmp-nvim-lua"] = {
     loaded = true,
     path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/cmp-nvim-lua",
@@ -111,36 +104,45 @@ _G.packer_plugins = {
     path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
-  cmp_luasnip = {
+  ["cmp-snippy"] = {
     loaded = true,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
-    url = "https://github.com/saadparwaiz1/cmp_luasnip"
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/cmp-snippy",
+    url = "https://github.com/dcampos/cmp-snippy"
+  },
+  ["dressing.nvim"] = {
+    loaded = true,
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/dressing.nvim",
+    url = "https://github.com/stevearc/dressing.nvim"
   },
   ["fidget.nvim"] = {
-    load_after = {
-      ["lualine.nvim"] = true
-    },
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/opt/fidget.nvim",
+    loaded = true,
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/fidget.nvim",
     url = "https://github.com/j-hui/fidget.nvim"
   },
-  ["friendly-snippets"] = {
+  ["gitsigns.nvim"] = {
     loaded = true,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/friendly-snippets",
-    url = "https://github.com/rafamadriz/friendly-snippets"
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  ["gruvbox.nvim"] = {
-    after = { "lualine.nvim" },
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/opt/gruvbox.nvim",
-    url = "https://github.com/ellisonleao/gruvbox.nvim"
+  ["goto-preview"] = {
+    loaded = true,
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/goto-preview",
+    url = "https://github.com/rmagatti/goto-preview"
   },
   harpoon = {
     loaded = true,
     path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/theprimeagen/harpoon"
+  },
+  ["indent-blankline.nvim"] = {
+    loaded = true,
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
+  ["kanagawa.nvim"] = {
+    loaded = true,
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/kanagawa.nvim",
+    url = "https://github.com/rebelot/kanagawa.nvim"
   },
   ["lsp-zero.nvim"] = {
     loaded = true,
@@ -148,227 +150,133 @@ _G.packer_plugins = {
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
   },
   ["lualine.nvim"] = {
-    after = { "fidget.nvim" },
-    config = { "\27LJ\2\n3\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\24ravan.setup.lualine\frequire\0" },
-    load_after = {
-      ["gruvbox.nvim"] = true
-    },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/opt/lualine.nvim",
+    loaded = true,
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
-  ["markdown-preview.nvim"] = {
+  nvim = {
     loaded = true,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
-    url = "https://github.com/iamcco/markdown-preview.nvim"
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/nvim",
+    url = "https://github.com/catppuccin/nvim"
   },
-  ["mason-lspconfig.nvim"] = {
+  ["nvim-autopairs"] = {
     loaded = true,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
-    url = "https://github.com/williamboman/mason-lspconfig.nvim"
-  },
-  ["mason.nvim"] = {
-    loaded = true,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/mason.nvim",
-    url = "https://github.com/williamboman/mason.nvim"
-  },
-  ["material.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/opt/material.nvim",
-    url = "https://github.com/marko-cerovac/material.nvim"
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
+  ["nvim-colorizer.lua"] = {
+    loaded = true,
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
+    url = "https://github.com/norcalli/nvim-colorizer.lua"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-snippy"] = {
+    loaded = true,
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/nvim-snippy",
+    url = "https://github.com/dcampos/nvim-snippy"
+  },
   ["nvim-tree.lua"] = {
-    config = { "\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26ravan.setup.nvim-tree\frequire\0" },
     loaded = true,
     path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
     url = "https://github.com/nvim-tree/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
-    after = { "nvim-treesitter-textobjects", "playground", "nvim-treesitter-refactor", "nvim-ts-autotag", "nvim-ts-context-commentstring" },
-    config = { "\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27ravan.setup.treesitter\frequire\0" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/opt/nvim-treesitter",
+    loaded = true,
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
-  ["nvim-treesitter-refactor"] = {
-    load_after = {
-      ["nvim-treesitter"] = true
-    },
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-refactor",
-    url = "https://github.com/nvim-treesitter/nvim-treesitter-refactor"
-  },
-  ["nvim-treesitter-textobjects"] = {
-    load_after = {
-      ["nvim-treesitter"] = true
-    },
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-textobjects",
-    url = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
-  },
-  ["nvim-ts-autotag"] = {
-    load_after = {
-      ["nvim-treesitter"] = true
-    },
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/opt/nvim-ts-autotag",
-    url = "https://github.com/windwp/nvim-ts-autotag"
-  },
-  ["nvim-ts-context-commentstring"] = {
-    load_after = {
-      ["nvim-treesitter"] = true
-    },
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/opt/nvim-ts-context-commentstring",
-    url = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring"
+  ["nvim-treesitter-context"] = {
+    loaded = true,
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
   },
   ["nvim-web-devicons"] = {
-    config = { "\27LJ\2\n?\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22nvim-web-devicons\frequire\0" },
     loaded = true,
     path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
+  },
+  ["nvim-window-picker"] = {
+    loaded = true,
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/nvim-window-picker",
+    url = "https://github.com/s1n7ax/nvim-window-picker"
   },
   ["packer.nvim"] = {
     loaded = true,
     path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
-  playground = {
-    load_after = {
-      ["nvim-treesitter"] = true
-    },
-    loaded = false,
-    needs_bufread = true,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/opt/playground",
-    url = "https://github.com/nvim-treesitter/playground"
-  },
-  ["plenary.nvim"] = {
+  ["persistence.nvim"] = {
     loaded = true,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/plenary.nvim",
-    url = "https://github.com/nvim-lua/plenary.nvim"
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/persistence.nvim",
+    url = "https://github.com/folke/persistence.nvim"
   },
   spaceduck = {
     loaded = true,
     path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/spaceduck",
     url = "https://github.com/pineapplegiant/spaceduck"
   },
-  ["telescope-fzf-native.nvim"] = {
-    config = { "\27LJ\2\nH\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\bfzf\19load_extension\14telescope\frequire\0" },
-    load_after = {},
+  ["symbols-outline.nvim"] = {
     loaded = true,
-    needs_bufread = false,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/opt/telescope-fzf-native.nvim",
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",
+    url = "https://github.com/simrat39/symbols-outline.nvim"
+  },
+  ["telescope-fzf-native.nvim"] = {
+    loaded = true,
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
     url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
   },
-  ["telescope-media-files.nvim"] = {
-    config = { "\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26ravan.setup.telescope\frequire\0" },
-    load_after = {},
+  ["telescope-ui-select.nvim"] = {
     loaded = true,
-    needs_bufread = false,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/opt/telescope-media-files.nvim",
-    url = "https://github.com/nvim-telescope/telescope-media-files.nvim"
-  },
-  ["telescope-symbols.nvim"] = {
-    load_after = {},
-    loaded = true,
-    needs_bufread = false,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/opt/telescope-symbols.nvim",
-    url = "https://github.com/nvim-telescope/telescope-symbols.nvim"
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/telescope-ui-select.nvim",
+    url = "https://github.com/nvim-telescope/telescope-ui-select.nvim"
   },
   ["telescope.nvim"] = {
-    after = { "telescope-fzf-native.nvim", "telescope-symbols.nvim", "telescope-media-files.nvim" },
-    config = { "\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26ravan.setup.telescope\frequire\0" },
     loaded = true,
-    only_config = true,
     path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["trouble.nvim"] = {
+    loaded = true,
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/trouble.nvim",
+    url = "https://github.com/folke/trouble.nvim"
+  },
+  ["true-zen.nvim"] = {
+    loaded = true,
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/true-zen.nvim",
+    url = "https://github.com/Pocco81/true-zen.nvim"
   },
   undotree = {
     loaded = true,
     path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
   },
-  ["vim-fugitive"] = {
+  ["vim-devicons"] = {
     loaded = true,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/vim-fugitive",
-    url = "https://github.com/tpope/vim-fugitive"
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/vim-devicons",
+    url = "https://github.com/ryanoasis/vim-devicons"
   },
   ["vim-startuptime"] = {
-    commands = { "StartupTime" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/opt/vim-startuptime",
+    loaded = true,
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/vim-startuptime",
     url = "https://github.com/dstein64/vim-startuptime"
+  },
+  ["which-key.nvim"] = {
+    loaded = true,
+    path = "/Users/vanjarapu.rajasekhar/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    url = "https://github.com/folke/which-key.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26ravan.setup.telescope\frequire\0", "config", "telescope.nvim")
-time([[Config for telescope.nvim]], false)
--- Config for: nvim-web-devicons
-time([[Config for nvim-web-devicons]], true)
-try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\22nvim-web-devicons\frequire\0", "config", "nvim-web-devicons")
-time([[Config for nvim-web-devicons]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26ravan.setup.nvim-tree\frequire\0", "config", "nvim-tree.lua")
-time([[Config for nvim-tree.lua]], false)
--- Load plugins in order defined by `after`
-time([[Sequenced loading]], true)
-vim.cmd [[ packadd telescope-symbols.nvim ]]
-vim.cmd [[ packadd telescope-media-files.nvim ]]
-
--- Config for: telescope-media-files.nvim
-try_loadstring("\27LJ\2\n5\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\26ravan.setup.telescope\frequire\0", "config", "telescope-media-files.nvim")
-
-vim.cmd [[ packadd telescope-fzf-native.nvim ]]
-
--- Config for: telescope-fzf-native.nvim
-try_loadstring("\27LJ\2\nH\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0'\2\3\0B\0\2\1K\0\1\0\bfzf\19load_extension\14telescope\frequire\0", "config", "telescope-fzf-native.nvim")
-
-time([[Sequenced loading]], false)
-
--- Command lazy-loads
-time([[Defining lazy-load commands]], true)
-pcall(vim.api.nvim_create_user_command, 'StartupTime', function(cmdargs)
-          require('packer.load')({'vim-startuptime'}, { cmd = 'StartupTime', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'vim-startuptime'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('StartupTime ', 'cmdline')
-      end})
-time([[Defining lazy-load commands]], false)
-
-vim.cmd [[augroup packer_load_aucmds]]
-vim.cmd [[au!]]
-  -- Event lazy-loads
-time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufEnter * ++once lua require("packer.load")({'lualine.nvim'}, { event = "BufEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au CursorHold * ++once lua require("packer.load")({'nvim-treesitter'}, { event = "CursorHold *" }, _G.packer_plugins)]]
-time([[Defining lazy-load event autocommands]], false)
-vim.cmd("augroup END")
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

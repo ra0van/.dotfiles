@@ -68,6 +68,6 @@ return {
   ['theprimeagen/harpoon']                     = 'harpoon',
   ['dstein64/vim-startuptime']                 = 'startuptime',
   ['mbbill/undotree']                          = 'undotree',
-  -- ['pineapplegiant/spaceduck']                 = 'spaceduck'
-  ['VonHeikemen/lsp-zero.nvim']                = 'lsp-zero'
+  ['VonHeikemen/lsp-zero.nvim']                = 'lsp-zero',
+  ['pineapplegiant/spaceduck']                 = 'spaceduck',
 }

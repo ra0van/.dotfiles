@@ -7,7 +7,7 @@ lsp.ensure_installed({
     'rust_analyzer',
     'gopls',
     'intelephense',
-    'csharp_ls'
+    --'csharp_ls'
 })
 
 local cmp = require('cmp')

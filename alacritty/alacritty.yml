@@ -18,6 +18,8 @@ window:
 scrolling:
   history: 0
 
+env:
+  TERM: xterm-256color
 
 font:
     normal :
@@ -26,7 +28,7 @@ font:
 
     bold:
       family: Hack Nerd Font
-      style: Regular
+      style: Bold
 
     italic:
       family: Hack Nerd Font

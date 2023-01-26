@@ -18,3 +18,6 @@ alias nw="cd ~/base/network/"
 alias rapi="cd ~/base/rp/api/"
 
 alias vm="nvim ."
+
+alias tmux="TERM=screen-256color-bce tmux"
+

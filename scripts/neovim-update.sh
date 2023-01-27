@@ -1,0 +1,20 @@
+#!/bin/zsh
+
+INSTALLDIR="$HOME/usr/local/nvim"
+
+cd "$HOME/usr/src/neovim" || exit
+
+current="$(git --no-pager log origin/master -n 1 --pretty=format:"%H")"
+echo "current hash: $current"
+git fetch
+latest="$(git --no-pager log origin/master -n 1 --pretty=format:"%H")"
+echo "latest hash:  $latest"
+if [[ $current != "$latest" ]] || [[ $1 == "-force" ]]; then
+	git pull
+	rm -rf "$INSTALLDIR"
+	make clean && make distclean && make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX="$INSTALLDIR" && make install
+	git log "$current"..HEAD
+else
+	echo "Neovim is already at latest version"
+fi
+

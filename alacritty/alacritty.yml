@@ -18,29 +18,33 @@ window:
 scrolling:
   history: 0
 
+live_config_reload: true
+
+env:
+  TERM: xterm-256color
 
 font:
-    normal : 
-      family: Hack Nerd Font
-      style: Regular
+  normal :
+    family: Hack Nerd Font
+    style: Regular
 
-    bold:
-      family: Hack Nerd Font
-      style: Regular 
+  bold:
+    family: Hack Nerd Font
+    style: bold
 
-    italic:
-      family: Hack Nerd Font
-      style: Italic
-    size: 14.0
+  italic:
+    family: Hack Nerd Font
+    style: Italic
+  size: 14.0
 
-    offset:
-      x: 0
-      y: 0
+  offset:
+    x: 0
+    y: 0
 
-      x: 0
-      y: 0
+    x: 0
+    y: 0
 
-# When true, bold text is drawn using the bright variant of colors.
+    # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: false
 
 # Use custom cursor colors. If true, display the cursor in the cursor.foreground
@@ -53,7 +57,7 @@ colors:
   primary:
     background: '#0f111b'
     foreground: '#ecf0c1'
-  # Normal colors
+    # Normal colors
   normal:
     black:   '#000000'
     red:     '#e33400'
@@ -64,7 +68,7 @@ colors:
     cyan:    '#7a5ccc'
     white:   '#686f9a'
 
-  # Bright colors
+    # Bright colors
   bright:
     black:   '#686f9a'
     red:     '#e33400'

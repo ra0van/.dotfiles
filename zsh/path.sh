@@ -21,7 +21,7 @@ export NVM_DIR="$HOME/.nvm"
 
 export M2_HOME=/Users/vanjarapu.rajasekhar/Downloads/apache-maven-3.8.2
 export M2=$M2_HOME/bin
-export PATH=$M2:$PATH 
+export PATH=$M2:$PATH
 
 
 
@@ -30,13 +30,19 @@ export PATH=${PATH}:/usr/local/mysql/bin
 #coreutils
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
-#brew php
-export PATH="/usr/local/opt/php@7.2/bin:$PATH"
-export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
+#brew php 7.2
+#export PATH="/usr/local/opt/php@7.2/bin:$PATH"
+#export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
+
+#brew php 8.1
+export PATH="/usr/local/opt/php@8.1/bin:$PATH"
+export PATH="/usr/local/opt/php@8.1/sbin:$PATH"
+export LDFLAGS="-L/usr/local/opt/php@8.1/lib"
+export CPPFLAGS="-I/usr/local/opt/php@8.1/include"
 
 export M2_HOME=/Users/vanjarapu.rajasekhar/Downloads/apache-maven-3.8.2
 export M2=$M2_HOME/bin
-export PATH=$M2:$PATH 
+export PATH=$M2:$PATH
 
 
 export PATH=${PATH}:/usr/local/mysql/bin

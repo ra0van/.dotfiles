@@ -64,6 +64,7 @@ return {
         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>clr', '<cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>', {})
         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', {})
         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cd', '<cmd>lua vim.lsp.buf.definition()<cr>', {})
+        vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ci', '<cmd>lua vim.lsp.buf.references()<cr>', {})
         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>cD', '<cmd>Telescope lsp_references theme=get_dropdown <cr>', {})
         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ch', '<cmd>lua vim.lsp.buf.signature_help()<cr>', {})
         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ci', '<cmd>Telescope lsp_implementations theme=get_dropdown <cr>', {})

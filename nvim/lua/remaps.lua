@@ -13,7 +13,7 @@ vnoremap("K", ":m '<-2<cr>gv=gv");
 -- nnoremap("<leader>b<Space>", ":ls<cr>:b<Space>")
 -- nnoremap("<leader>bb", ":bnext<cr>")
 -- nnoremap("<leader>bp", ":bprevious<cr>")
--- nnoremap('<leader>bd', '<cmd>bdel<cr>')
+nnoremap('<leader>bd', '<cmd>bdel<cr>')
 -- nnoremap('<leader>bD', '<cmd>bdel!<cr>')
 -- nnoremap('<leader>bnw', '<cmd>new<cr>')
 -- nnoremap('<leader>bv', '<cmd>vnew<cr>')

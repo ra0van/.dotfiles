@@ -7,3 +7,4 @@ source $CONFIGS/zsh/alias.sh
 
 
 
+export PATH="/usr/local/opt/ruby/bin:$PATH"

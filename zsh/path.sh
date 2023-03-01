@@ -6,10 +6,9 @@ export PATH="/usr/local/opt/bison/bin:$PATH"
 
 # go development
 export GOPATH="${HOME}/go"
-# export GOROOT="$(brew --prefix golang)/libexec"
-export GOROOT="/usr/local/opt/go@1.16/libexec"
+export GOROOT="/opt/homebrew/opt/go@1.19/libexec"
+export PATH="/opt/homebrew/opt/go@1.19/bin:$PATH"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
-export PATH="/usr/local/opt/go@1.16/bin:$PATH"
 # test -d "${GOPATH}/bin:${GOROOT}/bin"
 # test -d "${GOPATH}/src/github.com" || mkdir -p "{GOPATH}/src/github.com"
 
@@ -35,10 +34,10 @@ PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 #export PATH="/usr/local/opt/php@7.2/sbin:$PATH"
 
 #brew php 8.1
-export PATH="/usr/local/opt/php@8.1/bin:$PATH"
-export PATH="/usr/local/opt/php@8.1/sbin:$PATH"
-export LDFLAGS="-L/usr/local/opt/php@8.1/lib"
-export CPPFLAGS="-I/usr/local/opt/php@8.1/include"
+export PATH="/opt/homebrew/opt/php@8.1/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.1/sbin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/php@8.1/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/php@8.1/include"
 
 export M2_HOME=/Users/vanjarapu.rajasekhar/Downloads/apache-maven-3.8.2
 export M2=$M2_HOME/bin

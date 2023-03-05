@@ -22,11 +22,11 @@ return {
         lsp.preset("recommended")
 
         lsp.ensure_installed({
-            'sumneko_lua',
+            --'sumneko_lua',
             'rust_analyzer',
             'gopls',
-            'intelephense',
-            'csharp_ls'
+            'intelephense'
+            --'csharp_ls'
         })
 
         local cmp = require('cmp')

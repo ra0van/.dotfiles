@@ -48,12 +48,12 @@ return {
     local lsp_attach = function(args)
       return function(client, bufnr)
         if args == nil or args.format == nil or args.format then
-          vim.api.nvim_exec([[
-          augroup lsp_formatting_sync
-          autocmd! * <buffer>
-          autocmd BufWritePre <buffer> lua vim.lsp.buf.format()
-          augroup END
-          ]], false)
+          --vim.api.nvim_exec([[
+          --augroup lsp_formatting_sync
+          --autocmd! * <buffer>
+          --autocmd BufWritePre <buffer> lua vim.lsp.buf.format()
+          --augroup END
+          --]], false)
         end
 
         -- make omnifunc go via LSP’s completion directly

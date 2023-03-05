@@ -5,7 +5,7 @@ export PATH="/usr/local/opt/bison/bin:$PATH"
 
 
 # go development
-export GOPATH="${HOME}/go"
+export GOPATH="${HOME}/"
 export GOROOT="/opt/homebrew/opt/go@1.19/libexec"
 export PATH="/opt/homebrew/opt/go@1.19/bin:$PATH"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"

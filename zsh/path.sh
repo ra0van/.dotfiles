@@ -45,3 +45,6 @@ export PATH=$M2:$PATH
 
 
 export PATH=${PATH}:/usr/local/mysql/bin
+
+# Required for PHP unit tests (Unique ID generation)
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"

@@ -17,7 +17,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
     git
-    osx
     zsh-autosuggestions
     zsh-syntax-highlighting
     web-search
@@ -32,7 +31,7 @@ ZSH_DISABLE_COMPFIX="true"
 
 
 ## set neovim as default viewer for manpages
-if [ -n "${NVIM_LISTEN_ADDRESS+x}" ]; 
+if [ -n "${NVIM_LISTEN_ADDRESS+x}" ];
 then
   export MANPAGER="/usr/local/bin/nvr -c 'Man!' -o -"
 fi

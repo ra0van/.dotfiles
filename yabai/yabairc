@@ -28,3 +28,6 @@ yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Karabiner-Elements$" manage=off
 yabai -m rule --add app="^Arc$" title="" manage=off
+yabai -m rule --add app="^Todoist$" manage=off
+yabai -m rule --add app="^RazorPay Self Service$" manage=off
+yabai -m rule --add app="^Fantastical$" manage=off

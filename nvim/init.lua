@@ -33,7 +33,7 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.virtualedit = 'onemore'
 opt.laststatus = 3
-opt.cindent = true
+opt.cindent = false
 opt.softtabstop = -1 -- If negatvie, shiftwidth value is used
 opt.list = true
 --

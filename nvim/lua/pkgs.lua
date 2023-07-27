@@ -43,7 +43,7 @@ return {
     -- ['mrbjarksen/neo-tree-diagnostics.nvim']     = 'neo-tree-diagnostics',
     ['s1n7ax/nvim-window-picker']                = 'nvim-window-picker',
     -- ['vigoux/notifier.nvim']                     = 'notifier',
-    ['rebelot/kanagawa.nvim']                    = 'kanagawa',
+    -- ['rebelot/kanagawa.nvim']                    = 'kanagawa',
     ['catppuccin/nvim']                          = 'catppuccin',
     ['stevearc/dressing.nvim']                   = 'dressing',
     -- ['kartikp10/noctis.nvim']                    = 'noctis',
@@ -55,7 +55,8 @@ return {
     ['ellisonleao/gruvbox.nvim']                 = 'gruvbox',
     ['mfussenegger/nvim-dap']                    = 'dap',
     ['rcarriga/nvim-dap-ui']                     = 'dap-ui',
-    ['leoluz/nvim-dap-go']                       = 'dap-go'
+    ['leoluz/nvim-dap-go']                       = 'dap-go',
+    ['iamcco/markdown-preview.nvim']             = 'markdown-preview',
 
     -- ['theHamsta/nvim-dap-virtual-text']          = 'dap-virtual-text',
     -- ['tjdevries/colorbuddy.vim']                 = 'colorbuddy',

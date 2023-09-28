@@ -57,3 +57,5 @@ export PATH="/usr/local/smlnj/bin:$PATH"
 
 # python3 & pip
 export PATH="/opt/homebrew/bin/python3:$PATH"
+
+export PATH="/Users/vanjarapu.rajasekhar/.cargo/bin:$PATH"

@@ -48,3 +48,12 @@ export PATH=${PATH}:/usr/local/mysql/bin
 
 # Required for PHP unit tests (Unique ID generation)
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+# For M2 Mac
+export PATH=/opt/homebrew/bin/:$PATH
+
+# for SML
+export PATH="/usr/local/smlnj/bin:$PATH"
+
+# python3 & pip
+export PATH="/opt/homebrew/bin/python3:$PATH"

@@ -46,6 +46,7 @@ return {
 	require("telescope").load_extension("ui-select")
 	require("telescope").load_extension("fzf")
 	require("telescope").load_extension("harpoon")
+    require("telescope").load_extension("file_browser")
 
 	vim.cmd [[autocmd FileType TelescopePrompt inoremap <C-W> <C-S-W>]]
   end,

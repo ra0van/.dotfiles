@@ -21,3 +21,4 @@ alias vm="nvim ."
 
 alias tmux="TERM=screen-256color-bce tmux"
 
+alias python="python3"

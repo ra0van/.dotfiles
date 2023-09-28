@@ -6,7 +6,7 @@ return {
 	vim.g.nvim_tree_allow_resize = 1
   end,
   config = function()
-	local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+	--local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 
 	require'nvim-tree'.setup {
 	  update_focused_file = {

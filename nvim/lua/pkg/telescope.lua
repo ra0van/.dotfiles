@@ -100,6 +100,10 @@ return {
 		key = '<leader>fh',
 		cmd = 'Telescope oldfiles theme=get_dropdown previewer=false',
 	  },
+	  {
+		key = '<leader>fb',
+		cmd = 'Telescope find_files',
+	  },
 	}
   }
 }

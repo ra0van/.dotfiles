@@ -1,5 +1,5 @@
 */rzp.sh
 nvim/plugin/packer_compiled.lua
 nvim/lazy-lock.json
-secrets.zsh
+.secrets
 

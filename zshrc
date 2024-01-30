@@ -10,11 +10,13 @@ CONFIGS=$HOME/base/.dotfiles
 source $CONFIGS/zsh/init.sh
 source $CONFIGS/zsh/path.sh
 source $CONFIGS/zsh/alias.sh
-#source $CONFIGS/zsh/rzp.sh
-
-
 
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export PATH="/opt/homebrew/opt/ruby@3.2/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+
+. "$HOME/.asdf/asdf.sh"
+source $CONFIGS/ubuntu/zsh.ubuntu

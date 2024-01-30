@@ -36,7 +36,7 @@ PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 #brew php 8.1
 export PATH="/opt/homebrew/opt/php@8.1/bin:$PATH"
 export PATH="/opt/homebrew/opt/php@8.1/sbin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/php@8.1/lib"
+#export LDFLAGS="-L/opt/homebrew/opt/php@8.1/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/php@8.1/include"
 
 export M2_HOME=/Users/vanjarapu.rajasekhar/Downloads/apache-maven-3.8.2

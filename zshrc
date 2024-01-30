@@ -10,9 +10,6 @@ CONFIGS=$HOME/base/.dotfiles
 source $CONFIGS/zsh/init.sh
 source $CONFIGS/zsh/path.sh
 source $CONFIGS/zsh/alias.sh
-#source $CONFIGS/zsh/rzp.sh
-
-
 
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 
@@ -22,4 +19,4 @@ export PATH="/opt/homebrew/opt/ruby@3.2/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
 . "$HOME/.asdf/asdf.sh"
-export STARTER_APP_DATABASE_PASSWORD="PRO_mac99"
+source $CONFIGS/ubuntu/zsh.ubuntu

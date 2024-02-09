@@ -13,3 +13,6 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # export PATH="$PATH:$HOME/.rvm/bin"
 
 export STARTER_APP_DATABASE_PASSWORD="PG_123"
+
+source "$HOME/.cargo/env"
+

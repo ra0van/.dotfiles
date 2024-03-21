@@ -197,7 +197,25 @@ require('lazy').setup({
   },
 
   {
-    --'jlcrochet/vim-ruby'
+    'jlcrochet/vim-ruby'
+  },
+
+
+  {
+    'crusj/bookmarks.nvim',
+    keys = {
+      { "<tab><tab>", mode = { "n" } },
+    },
+    branch = 'main',
+    dependencies = { 'nvim-web-devicons' },
+    config = function()
+      require("bookmarks").setup()
+      require("telescope").load_extension("bookmarks")
+    end
+  },
+
+  {
+    'kyazdani42/nvim-web-devicons'
   },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
@@ -290,6 +308,7 @@ require('telescope').setup {
     },
   },
 }
+
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
@@ -459,7 +478,7 @@ require('mason-lspconfig').setup()
 --  define the property 'filetypes' to the map in question.
 local servers = {
   -- clangd = {},
-   gopls = {},
+  gopls = {},
   -- pyright = {},
   rust_analyzer = {},
   -- tsserver = {},

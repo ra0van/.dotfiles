@@ -1,13 +1,18 @@
-
+-- Define the list of simple plugins with options if needed
 local simple_plugins = {
   -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
+  { name = 'tpope/vim-fugitive' },
+  { name = 'tpope/vim-rhubarb' },
 
   -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
-  'jlcrochet/vim-ruby',
-  'kyazdani42/nvim-web-devicons',
+  { name = 'tpope/vim-sleuth' },
+
+  { name = 'jlcrochet/vim-ruby' },
+
+  { name = 'kyazdani42/nvim-web-devicons' },
+
+  -- Useful plugin to show you pending keybinds.
+  -- { name = 'folke/which-key.nvim', opts = {} },  -- example with opts
 }
 
 local disable_plugins = {
@@ -57,8 +62,21 @@ local function bootstrap()
   -- Check lazy.nvim installation
   ensure_lazy_nvim_installed()
 
-  local plugins = vim.tbl_extend('force', simple_plugins, {})
+  local plugins = {}
 
+  -- Add simple plugins to the plugins list, checking for options
+  for _, plugin in ipairs(simple_plugins) do
+    if not is_plugin_disabled(plugin.name) then
+      if plugin.opts then
+        table.insert(plugins, { plugin.name, opts = plugin.opts })
+      else
+        table.insert(plugins, plugin.name)
+      end
+    end
+  end
+
+
+  -- Add plugins from /lua/plugins directory
   local plugin_dir = vim.fn.stdpath('config') .. '/lua/plugins'
   local glob_pattern = plugin_dir .. '/*.lua'
   local plugin_files_str = vim.fn.glob(glob_pattern, 0, 0)

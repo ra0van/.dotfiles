@@ -11,12 +11,12 @@ local simple_plugins = {
 
   { name = 'kyazdani42/nvim-web-devicons' },
 
-  -- Useful plugin to show you pending keybinds.
-  -- { name = 'folke/which-key.nvim', opts = {} },  -- example with opts
+   -- "gc" to comment visual regions/lines
+   { name = 'numToStr/Comment.nvim', opts = {} },
 }
 
 local disable_plugins = {
-
+     'lewis6991/gitsigns.nvim',
 }
 
 -- Make sure lazy package manager is installed
@@ -39,8 +39,9 @@ local function ensure_lazy_nvim_installed()
 end
 
 local function is_plugin_disabled(name)
+  print('check' .. name)
   for _, disabled_name in ipairs(disable_plugins) do
-    if name:match(disabled_name) then
+    if name == disabled_name or  string.match(name, disabled_name) then
       return true
     end
   end
@@ -89,7 +90,8 @@ local function bootstrap()
 
     local plugin_config = load_plugin_config(file)
     for _, plugin in ipairs(plugin_config) do
-      if not is_plugin_disabled(plugin[1]) then
+      print('test ' .. plugin)
+      if not is_plugin_disabled(plugin) then
         table.insert(plugins, plugin)
       end
     end

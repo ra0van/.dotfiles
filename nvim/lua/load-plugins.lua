@@ -12,7 +12,8 @@ local simple_plugins = {
   { name = 'kyazdani42/nvim-web-devicons' },
 
    -- "gc" to comment visual regions/lines
-   { name = 'numToStr/Comment.nvim', opts = {} },
+  { name = 'numToStr/Comment.nvim', opts = {} },
+
 }
 
 local disable_plugins = {
@@ -50,6 +51,7 @@ end
 
 local function load_plugin_config(file)
   local ok, plugin_config = pcall(dofile, file)
+  print(vim.inspect(plugin_config))
   if not ok then
     print("Error loading plugin config:" .. file)
     return {}

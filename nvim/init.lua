@@ -1,5 +1,6 @@
 require('keymaps')
-require('plugin-load').bootstrap()
+require('load-plugins').bootstrap()
+require('settings')
 -- require('plugin-setup')
 
 -- NOTE: Here is where you install your plugins.
@@ -356,9 +357,8 @@ require('plugin-load').bootstrap()
 -- vim.keymap.set({ "n", "v" }, "mo", "<cmd>BookmarksGoto<cr>", { desc = "Go to bookmark at current active BookmarkList" })
 -- vim.keymap.set({ "n", "v" }, "ma", "<cmd>BookmarksCommands<cr>", { desc = "Find and trigger a bookmark command." })
 
-require('plugins.autoformat')
-require('plugins.debug')
-require('settings')
+-- require('plugins.autoformat')
+-- require('plugins.debug')
 
 -- See `:help telescope.builtin`
 -- vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })

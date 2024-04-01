@@ -39,12 +39,11 @@ local function ensure_lazy_nvim_installed()
 end
 
 local function is_plugin_disabled(name)
-  print('check' .. name)
-  for _, disabled_name in ipairs(disable_plugins) do
-    if name == disabled_name or  string.match(name, disabled_name) then
-      return true
-    end
-  end
+  -- for _, disabled_name in ipairs(disable_plugins) do
+  --   if name == disabled_name or  string.match(name, disabled_name) then
+  --     return true
+  --   end
+  -- end
 
   return false
 end
@@ -90,7 +89,6 @@ local function bootstrap()
 
     local plugin_config = load_plugin_config(file)
     for _, plugin in ipairs(plugin_config) do
-      print('test ' .. plugin)
       if not is_plugin_disabled(plugin) then
         table.insert(plugins, plugin)
       end

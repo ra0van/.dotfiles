@@ -51,9 +51,9 @@ end
 
 local function load_plugin_config(file)
   local ok, plugin_config = pcall(dofile, file)
-  print(vim.inspect(plugin_config))
+  --  print(vim.inspect(plugin_config))
   if not ok then
-    print("Error loading plugin config:" .. file)
+    -- print("Error loading plugin config:" .. file)
     return {}
   end
 
@@ -84,10 +84,10 @@ local function bootstrap()
   local plugin_files_str = vim.fn.glob(glob_pattern, 0, 0)
   local plugin_files = vim.split(plugin_files_str, "\n")
 
-  print(#plugin_files)
+  -- print(#plugin_files)
 
   for _, file in ipairs(plugin_files) do
-    print("Loading plugin " .. file)
+    -- print("Loading plugin " .. file)
 
     local plugin_config = load_plugin_config(file)
     for _, plugin in ipairs(plugin_config) do

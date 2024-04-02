@@ -1,76 +1,191 @@
--- autoformat.lua
---
--- Use your language server to automatically format your code on save.
--- Adds additional commands as well to manage the behavior
+-- Sampled from https://github.com/amitds1997/dotfiles/tree/main/dot_config/nvim
+-- https://github.com/amitds1997/dotfiles/blob/main/dot_config/nvim/lua/plugins/lsp-config.lua
+local lsp_config = function()
+  local lspconfig = require("lspconfig")
+  -- local python_interpreter_path = vim.fn.exepath("python")
+  local mason_lspconfig = require("mason-lspconfig")
+  local lsp_protocol_methods = vim.lsp.protocol.Methods
 
+  require("lspconfig.ui.windows").default_options.border = "rounded"
+
+  local ensure_installed = {
+    "bashls",
+    "clangd",
+    "dockerls",
+    "docker_compose_language_service",
+    "lua_ls",
+    "jsonls",
+    "marksman",
+    "yamlls",
+    "ruff_lsp",
+    "rust_analyzer",
+    "texlab",
+  }
+
+  local ensure_lsp_installed = {
+    node = { "eslint", "tsserver", "pyright" },
+    go = { "gopls" },
+  }
+
+  for binary, lsp in pairs(ensure_lsp_installed) do
+    if vim.fn.executable(binary) == 1 then
+      for _, lsp_name in ipairs(lsp) do
+        table.insert(ensure_installed, lsp_name)
+      end
+    end
+  end
+
+  ---Function to execute on LSP getting attached
+  ---@param client vim.lsp.Client
+  ---@param bufnr any
+  local function on_attach(client, bufnr)
+    vim.api.nvim_set_option_value("omnifunc", "v:lua.vim.lsp.omnifunc", { buf = bufnr })
+
+    if client.supports_method(lsp_protocol_methods.textDocument_inlayHint) then
+      vim.lsp.inlay_hint.enable(bufnr, true)
+    end
+
+    if client.supports_method(lsp_protocol_methods.textDocument_codeLens) then
+      vim.lsp.codelens.refresh()
+      vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+        buffer = bufnr,
+        callback = vim.lsp.codelens.refresh,
+      })
+    end
+
+    local bufopts = { buffer = bufnr }
+    local wk, lsp_buf = package.loaded["which-key"], vim.lsp.buf
+
+    local wk_maps = {
+      ["<leader>l"] = {
+        name = "LSP",
+
+        h = { lsp_buf.hover, "Show symbol hover info" },
+        s = {
+          name = "Symbol actions",
+
+          a = { "<cmd>Lspsaga finder<CR>", "Show all symbol details" },
+          c = { "<cmd>Lspsaga finder dec<CR>", "Show symbol declaration" },
+          d = { "<cmd>Lspsaga finder def<CR>", "Show symbol definition" },
+          i = { "<cmd>Lspsaga finder imp<CR>", "Show symbol implementations" },
+          r = { "<cmd>Lspsaga finder ref<CR>", "Show symbol references" },
+        },
+        g = {
+          name = "Go to definition",
+
+          d = { "<cmd>Lspsaga goto_definition<CR>", "Go to definition" },
+          t = { "<cmd>Lspsaga goto_type_definition<CR>", "Go to type definition" },
+        },
+        p = {
+          name = "Peek definition",
+
+          d = { "<cmd>Lspsaga peek_definition<CR>", "Peek symbol definition" },
+          t = { "<cmd>Lspsaga peek_type_definition<CR>", "Peek symbol type definition" },
+        },
+        c = {
+          name = "Code action + Call hierarchy",
+
+          a = { "<cmd>Lspsaga code_action<CR>", "Show possible code actions" },
+          i = { "<cmd>Lspsaga incoming_calls<CR>", "Show all incoming calls" },
+          o = { "<cmd>Lspsaga outgoing_calls<CR>", "Show all outgoing calls" },
+        },
+        d = {
+          name = "Document actions",
+          o = { "<cmd>Lspsaga outline<CR>", "Show document symbol outline" },
+          s = { "<cmd>Telescope lsp_document_symbols<CR>", "Search document symbols" },
+        },
+        e = {
+          name = "Extras",
+
+          o = { require("lspconfig.ui.lspinfo"), "Display attached, active, and configured LSP servers" },
+          c = { vim.lsp.codelens.run, "Run codelens on the line" },
+        },
+        r = {
+          function()
+            return ":IncRename " .. vim.fn.expand("<cword>")
+          end,
+          "Rename symbol",
+          expr = true,
+        },
+        w = {
+          name = "Workspace actions",
+
+          a = { lsp_buf.add_workspace_folder, "Add workspace folder" },
+          r = { lsp_buf.remove_workspace_folder, "Remove workspace folder" },
+          l = {
+            function()
+              vim.notify(vim.inspect(lsp_buf.list_workspace_folders))
+            end,
+            "List workspace folders",
+          },
+        },
+      },
+    }
+    wk.register(wk_maps, bufopts)
+  end
+
+  local capabilities = require("cmp_nvim_lsp").default_capabilities()
+  mason_lspconfig.setup({
+    ensure_installed = ensure_installed,
+    automatic_installation = true,
+    handlers = {
+      function(server)
+        lspconfig[server].setup({
+          on_attach = on_attach,
+          capabilities = capabilities,
+        })
+      end,
+      gopls = function()
+        lspconfig.gopls.setup({
+          on_attach = on_attach,
+          capabilities = capabilities,
+          settings = require("plugins.lsp.server-config.gopls"),
+        })
+      end,
+      jsonls = function()
+        lspconfig.jsonls.setup({
+          on_attach = on_attach,
+          capabilities = capabilities,
+          settings = require("plugins.lsp.server-config.jsonls"),
+        })
+      end,
+      yamlls = function()
+        lspconfig.yamlls.setup({
+          on_attach = on_attach,
+          capabilities = capabilities,
+          settings = require("plugins.lsp.server-config.yamlls"),
+        })
+      end,
+      lua_ls = function()
+        lspconfig.lua_ls.setup({
+          on_attach = on_attach,
+          capabilities = capabilities,
+          settings = require("plugins.lsp.server-config.lua_ls"),
+        })
+      end,
+      ruff_lsp = function()
+        lspconfig.ruff_lsp.setup({
+          on_attach = function(client, bufnr)
+            client.server_capabilities.hoverProvider = false
+            on_attach(client, bufnr)
+          end,
+        })
+      end,
+    },
+  })
+end
 return {
   {
-    'neovim/nvim-lspconfig',
-    config = function()
-      -- Switch for controlling whether you want autoformatting.
-      --  Use :KickstartFormatToggle to toggle autoformatting on or off
-      local format_is_enabled = true
-      vim.api.nvim_create_user_command('KickstartFormatToggle', function()
-        format_is_enabled = not format_is_enabled
-        print('Setting autoformatting to: ' .. tostring(format_is_enabled))
-      end, {})
-
-      -- Create an augroup that is used for managing our formatting autocmds.
-      --      We need one augroup per client to make sure that multiple clients
-      --      can attach to the same buffer without interfering with each other.
-      local _augroups = {}
-      local get_augroup = function(client)
-        if not _augroups[client.id] then
-          local group_name = 'kickstart-lsp-format-' .. client.name
-          local id = vim.api.nvim_create_augroup(group_name, { clear = true })
-          _augroups[client.id] = id
-        end
-
-        return _augroups[client.id]
-      end
-
-      -- Whenever an LSP attaches to a buffer, we will run this function.
-      --
-      -- See `:help LspAttach` for more information about this autocmd event.
-      vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('kickstart-lsp-attach-format', { clear = true }),
-        -- This is where we attach the autoformatting for reasonable clients
-        callback = function(args)
-          local client_id = args.data.client_id
-          local client = vim.lsp.get_client_by_id(client_id)
-          local bufnr = args.buf
-
-          -- Only attach to clients that support document formatting
-          if not client.server_capabilities.documentFormattingProvider then
-            return
-          end
-
-          -- Tsserver usually works poorly. Sorry you work with bad languages
-          -- You can remove this line if you know what you're doing :)
-          if client.name == 'tsserver' then
-            return
-          end
-
-          -- Create an autocmd that will run *before* we save the buffer.
-          --  Run the formatting command for the LSP that has just attached.
-          vim.api.nvim_create_autocmd('BufWritePre', {
-            group = get_augroup(client),
-            buffer = bufnr,
-            callback = function()
-              if not format_is_enabled then
-                return
-              end
-
-              vim.lsp.buf.format {
-                async = false,
-                filter = function(c)
-                  return c.id == client.id
-                end,
-              }
-            end,
-          })
-        end,
-      })
-    end,
+    "neovim/nvim-lspconfig",
+    config = lsp_config,
+    event = { "BufNewFile", "BufReadPre" },
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "smjonas/inc-rename.nvim",
+      "nvimdev/lspsaga.nvim",
+      "b0o/schemastore.nvim", -- Enable schemas availability for JSON and YAML
+      "hrsh7th/cmp-nvim-lsp",
+    },
   }
 }

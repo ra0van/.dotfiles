@@ -1,25 +1,3 @@
--- Define the list of simple plugins with options if needed
-local simple_plugins = {
-  -- Git related plugins
-  { name = 'tpope/vim-fugitive' },
-  { name = 'tpope/vim-rhubarb' },
-
-  -- Detect tabstop and shiftwidth automatically
-  { name = 'tpope/vim-sleuth' },
-
-  { name = 'jlcrochet/vim-ruby' },
-
-  { name = 'kyazdani42/nvim-web-devicons' },
-
-   -- "gc" to comment visual regions/lines
-  { name = 'numToStr/Comment.nvim', opts = {} },
-
-}
-
-local disable_plugins = {
-     'lewis6991/gitsigns.nvim',
-}
-
 -- Make sure lazy package manager is installed
 local function ensure_lazy_nvim_installed()
 
@@ -39,65 +17,104 @@ local function ensure_lazy_nvim_installed()
   vim.opt.rtp:prepend(lazypath)
 end
 
-local function is_plugin_disabled(name)
-  -- for _, disabled_name in ipairs(disable_plugins) do
-  --   if name == disabled_name or  string.match(name, disabled_name) then
-  --     return true
-  --   end
-  -- end
-
-  return false
-end
-
-local function load_plugin_config(file)
-  local ok, plugin_config = pcall(dofile, file)
-  --  print(vim.inspect(plugin_config))
-  if not ok then
-    -- print("Error loading plugin config:" .. file)
-    return {}
-  end
-
-  return plugin_config
-end
 
 local function bootstrap()
   -- Check lazy.nvim installation
   ensure_lazy_nvim_installed()
+  local lazy = require("lazy")
 
-  local plugins = {}
+  require("lazy.core.cache").enable()
+  -- require
 
-  -- Add simple plugins to the plugins list, checking for options
-  for _, plugin in ipairs(simple_plugins) do
-    if not is_plugin_disabled(plugin.name) then
-      if plugin.opts then
-        table.insert(plugins, { plugin.name, opts = plugin.opts })
-      else
-        table.insert(plugins, plugin.name)
-      end
-    end
+  local lazy_opts = {
+    defaults = { lazy = false },
+    ui = {
+      border = "rounded",
+      backdrop = 100,
+      title = " Plugin manager ",
+      icons = {
+        cmd = " ",
+        config = " ",
+        event = "",
+        ft = " ",
+        init = "󰅕 ",
+        import = "󰋺 ",
+        keys = " ",
+        lazy = "󰒲 ",
+        loaded = "◍",
+        not_loaded = "○",
+        plugin = " ",
+        runtime = " ",
+        require = "󰢱 ",
+        source = " ",
+        start = " ",
+        task = "✔",
+        list = {
+          "●",
+          "◍",
+          "◌",
+          "‒",
+        },
+      },
+    },
+    install = {
+      missing = true,
+      colorscheme = { require("core.vars").colorscheme, "habamax" },
+    },
+    change_detection = { notify = false },
+    checker = { enabled = true, notify = false },
+    performance = {
+      rtp = {
+        disabled_plugins = {
+          "2html_plugin",
+          "bugreport",
+          "compiler",
+          "ftplugin",
+          "getscript",
+          "getscriptPlugin",
+          "gzip",
+          "logipat",
+          "matchit",
+          "matchparen",
+          "netrw",
+          "netrwFileHandlers",
+          "netrwPlugin",
+          "netrwSettings",
+          "optwin",
+          "rplugin",
+          "rrhelper",
+          "spellfile_plugin",
+          "synmenu",
+          "syntax",
+          "tar",
+          "tarPlugin",
+          "tohtml",
+          "tutor",
+          "vimball",
+          "vimballPlugin",
+          "zip",
+          "zipPlugin",
+        },
+      },
+    },
+  }
+  lazy.setup("plugins", lazy_opts)
+
+  local function load_everything_else()
+
   end
 
-
-  -- Add plugins from /lua/plugins directory
-  local plugin_dir = vim.fn.stdpath('config') .. '/lua/plugins'
-  local glob_pattern = plugin_dir .. '/*.lua'
-  local plugin_files_str = vim.fn.glob(glob_pattern, 0, 0)
-  local plugin_files = vim.split(plugin_files_str, "\n")
-
-  -- print(#plugin_files)
-
-  for _, file in ipairs(plugin_files) do
-    -- print("Loading plugin " .. file)
-
-    local plugin_config = load_plugin_config(file)
-    for _, plugin in ipairs(plugin_config) do
-      if not is_plugin_disabled(plugin) then
-        table.insert(plugins, plugin)
-      end
-    end
+  if vim.fn.argc(-1) == 0 then
+    -- autocmds and keymaps can wait to load
+    vim.api.nvim_create_autocmd("User", {
+      group = vim.api.nvim_create_augroup("LazyVim", { clear = true }),
+      pattern = "VeryLazy",
+      callback = load_everything_else,
+    })
+  else
+    load_everything_else()
   end
 
-  require('lazy').setup(plugins)
 end
 
 return {

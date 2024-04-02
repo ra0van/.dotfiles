@@ -24,7 +24,7 @@ local function bootstrap()
   local lazy = require("lazy")
 
   require("lazy.core.cache").enable()
-  -- require
+  require("core.options")
 
   local lazy_opts = {
     defaults = { lazy = false },
@@ -101,7 +101,9 @@ local function bootstrap()
   lazy.setup("plugins", lazy_opts)
 
   local function load_everything_else()
-
+    -- require("core.autocmds")
+    require("core.keymaps")
+    -- require("core.diagnostics")
   end
 
   if vim.fn.argc(-1) == 0 then

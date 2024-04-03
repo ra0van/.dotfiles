@@ -39,7 +39,7 @@ local telescope_config = function ()
         enable_preview = true,
       },
       find_files = {
-        find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--no-require-git" },
+        -- find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--no-require-git" },
         hidden = true,
       },
       buffers = {

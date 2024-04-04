@@ -98,8 +98,9 @@ local function bootstrap()
       },
     },
   }
+  print("Lap")
   lazy.setup("plugins", lazy_opts)
-
+  print("Lap")
   local function load_everything_else()
     -- require("core.autocmds")
     require("core.keymaps")

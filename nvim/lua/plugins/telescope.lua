@@ -1,6 +1,7 @@
 local telescope_config = function ()
   local telescope = require("telescope")
   local actions = require("telescope.actions")
+  local lga_actions = require("telescope-live-grep-args.actions")
 
   telescope.setup({
     extensions = {
@@ -9,6 +10,20 @@ local telescope_config = function ()
         override_generic_sorter = true,
         override_file_sorter = true,
         case_mode = "smart_case",
+      },
+      live_grep_args = {
+        auto_quoting = true, -- enable/disable auto-quoting
+        -- define mappings, e.g.
+        mappings = { -- extend mappings
+          i = {
+            ["<C-k>"] = lga_actions.quote_prompt(),
+            ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+          },
+        },
+        -- ... also accepts theme settings, for example:
+        -- theme = "dropdown", -- use dropdown theme
+        -- theme = { }, -- use own theme spec
+        -- layout_config = { mirror=true }, -- mirror preview pane
       }
     },
     defaults = {
@@ -104,6 +119,7 @@ local telescope_config = function ()
       r = { built_in.resume, "[r] Resume last telescope operation" },
       t = { "<cmd>Telescope<CR>", "[t] Open telescope" },
       w = { telescope.extensions.live_grep_args.live_grep_args, "[w] Find word" },
+      cw = { built_in.grep_string, "[w] Search current word" },
       [":"] = { built_in.command_history, "[:] Show commands executed recently and run them on <CR>" },
       ["/"] = { built_in.current_buffer_fuzzy_find, "[/] Fuzzy find in the current buffer" },
     },

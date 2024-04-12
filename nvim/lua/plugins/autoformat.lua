@@ -39,6 +39,7 @@ local lsp_config = function()
   ---@param client vim.lsp.Client
   ---@param bufnr any
   local function on_attach(client, bufnr)
+    print "Lsp Attach test"
     vim.api.nvim_set_option_value("omnifunc", "v:lua.vim.lsp.omnifunc", { buf = bufnr })
 
     if client.supports_method(lsp_protocol_methods.textDocument_inlayHint) then
@@ -55,6 +56,7 @@ local lsp_config = function()
 
     local bufopts = { buffer = bufnr }
     local wk, lsp_buf = package.loaded["which-key"], vim.lsp.buf
+
 
     local wk_maps = {
       ["<leader>l"] = {
@@ -168,6 +170,13 @@ local lsp_config = function()
           on_attach = on_attach,
           capabilities = capabilities,
           settings = require("plugins.lsp.server-config.ruby_ls"),
+        })
+      end,
+      tsserver = function ()
+        lspconfig.tsserver.setup({
+          on_attach = on_attach,
+          capabilities = capabilities,
+          settings = require("plugins.lsp.server-config.tsserver")
         })
       end
       -- ruff_lsp = function()

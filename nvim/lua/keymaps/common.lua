@@ -44,4 +44,18 @@ return {
       "Open Neogit",
     },
   },
+
+  ["<leader>l"] = {
+      name = "LSP",
+      h = { vim.lsp.buf.hover, "Show symbol"},
+      s = {
+          name = "Symbol actions",
+
+          a = { "<cmd>Lspsaga finder<CR>", "Show all symbol details" },
+          c = { "<cmd>Lspsaga finder dec<CR>", "Show symbol declaration" },
+          d = { "<cmd>Lspsaga finder def<CR>", "Show symbol definition" },
+          i = { "<cmd>Lspsaga finder imp<CR>", "Show symbol implementations" },
+          r = { "<cmd>Lspsaga finder ref<CR>", "Show symbol references" },
+        },
+  } 
 }

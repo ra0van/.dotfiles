@@ -17,7 +17,6 @@ local lsp_config = function()
     "jsonls",
     "marksman",
     "yamlls",
-    -- "ruff_lsp",
     "rust_analyzer",
     "texlab",
   }
@@ -25,6 +24,7 @@ local lsp_config = function()
   local ensure_lsp_installed = {
     node = { "eslint", "tsserver", "pyright" },
     go = { "gopls" },
+    ruby = {"solargraph", "ruby_ls"}
   }
 
   for binary, lsp in pairs(ensure_lsp_installed) do

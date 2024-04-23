@@ -185,7 +185,7 @@ return {
       buf = 0,
     }) ~= "prompt" or require("cmp_dap").is_dap_buffer()
   end,
-  event = { "InsertEnter" },
+  --[[ event = { "InsertEnter" }, ]]
   dependencies = {
     {
       "L3MON4D3/LuaSnip",

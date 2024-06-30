@@ -9,7 +9,6 @@ end
 
 return {
   ["<ESC>"] = { "<cmd>nohlsearch<CR>", "Remove active search highlight" },
-  ["<TAB>"] = { buf_switcher, "Switch buffers using menu", mode = "v" },
   ["<S-TAB>"] = { buf_switcher, "Switch buffers using menu", mode = "v" },
   ["<S-Tab>"] = { "<C-d>", "De-tab", mode = "i" },
 

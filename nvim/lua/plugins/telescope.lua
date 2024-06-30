@@ -81,7 +81,6 @@ local telescope_config = function ()
                 require("mini.bufremove").delete(selection.bufnr, force)
               end)
             end,
-            ["<Tab>"] = actions.move_selection_next,
             ["<S-Tab>"] = actions.move_selection_previous,
           },
         },
@@ -108,7 +107,7 @@ local telescope_config = function ()
     ["<leader>t"] = {
       name = "telescope",
       b = { built_in.buffers, "[b] Select from open buffers" },
-      c = { built_in.colorscheme, "[c] Change colorscheme" },
+      -- c = { built_in.colorscheme, "[c] Change colorscheme" },
       d = { built_in.diagnostics, "[d] Diagnostics" },
       f = { built_in.find_files, "[f] Find file" },
       g = { built_in.git_files, "[g] Find file in git repo" },
@@ -118,8 +117,8 @@ local telescope_config = function ()
       -- p = { telescope.extensions.projects.projects, "[p] Open projects window" },
       r = { built_in.resume, "[r] Resume last telescope operation" },
       t = { "<cmd>Telescope<CR>", "[t] Open telescope" },
+      c = { built_in.grep_string, "[c] Search current word" },
       w = { telescope.extensions.live_grep_args.live_grep_args, "[w] Find word" },
-      cw = { built_in.grep_string, "[w] Search current word" },
       [":"] = { built_in.command_history, "[:] Show commands executed recently and run them on <CR>" },
       ["/"] = { built_in.current_buffer_fuzzy_find, "[/] Fuzzy find in the current buffer" },
     },

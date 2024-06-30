@@ -49,5 +49,8 @@ return {
   {
    'stevearc/dressing.nvim'
   },
-
+  {
+    "Hoffs/omnisharp-extended-lsp.nvim",
+    ft = { "cs", "vb" },
+  },
 }

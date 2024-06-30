@@ -8,6 +8,5 @@ local function buf_switcher()
 end
 
 return {
-  ["<TAB>"] = { buf_switcher, "Switch buffers using menu" },
   ["<S-TAB>"] = { buf_switcher, "Switch buffers using menu" },
 }

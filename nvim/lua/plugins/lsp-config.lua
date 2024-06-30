@@ -19,7 +19,8 @@ local lsp_config = function()
     "yamlls",
     "rust_analyzer",
     "texlab",
-    "ruby_ls"
+    "ruby_ls",
+    "omnisharp"
   }
 
   local ensure_lsp_installed = {
@@ -176,6 +177,16 @@ local lsp_config = function()
         settings = require("plugins.lsp.server-config.ruby_ls"),
         -- You can add more ruby_ls specific settings here
         root_dir = lspconfig.util.root_pattern("Gemfile", ".git", ".")
+        })
+      end,
+      omnisharp = function()
+        lspconfig.omnisharp.setup({
+          on_attach = on_attach,
+          capabilities = capabilities,
+          settings = require("plugins.lsp.server-config.omnisharp"),
+          handlers = {
+            ["textDocument/definition"] = require('omnisharp_extended').handler,
+          },
         })
       end,
     },

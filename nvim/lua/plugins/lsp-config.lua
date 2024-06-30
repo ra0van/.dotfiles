@@ -19,12 +19,12 @@ local lsp_config = function()
     "yamlls",
     "rust_analyzer",
     "texlab",
+    "ruby_ls"
   }
 
   local ensure_lsp_installed = {
     node = { "eslint", "tsserver", "pyright" },
     go = { "gopls" },
-    ruby = {"solargraph", "ruby_ls"}
   }
 
   for binary, lsp in pairs(ensure_lsp_installed) do
@@ -167,26 +167,17 @@ local lsp_config = function()
       end,
       ruby_ls = function()
         lspconfig.ruby_ls.setup({
-          on_attach = on_attach,
-          capabilities = capabilities,
-          settings = require("plugins.lsp.server-config.ruby_ls"),
+        on_attach = function(client, bufnr)
+          -- Custom on_attach logic for ruby_ls
+          on_attach(client, bufnr)
+          -- Additional ruby-specific keybindings or settings
+        end,
+        capabilities = capabilities,
+        settings = require("plugins.lsp.server-config.ruby_ls"),
+        -- You can add more ruby_ls specific settings here
+        root_dir = lspconfig.util.root_pattern("Gemfile", ".git", ".")
         })
       end,
-      tsserver = function ()
-        lspconfig.tsserver.setup({
-          on_attach = on_attach,
-          capabilities = capabilities,
-          settings = require("plugins.lsp.server-config.tsserver")
-        })
-      end
-      -- ruff_lsp = function()
-      --   lspconfig.ruff_lsp.setup({
-      --     on_attach = function(client, bufnr)
-      --       client.server_capabilities.hoverProvider = false
-      --       on_attach(client, bufnr)
-      --     end,
-      --   })
-      -- end,
     },
   })
 end

@@ -6,8 +6,8 @@ export PATH="/usr/local/opt/bison/bin:$PATH"
 
 # go development
 export GOPATH="${HOME}/"
-export GOROOT="/opt/homebrew/opt/go@1.19/libexec"
-export PATH="/opt/homebrew/opt/go@1.19/bin:$PATH"
+export GOROOT="/opt/homebrew/opt/go@1.21/libexec"
+export PATH="/opt/homebrew/opt/go@1.21/bin:$PATH"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 # test -d "${GOPATH}/bin:${GOROOT}/bin"
 # test -d "${GOPATH}/src/github.com" || mkdir -p "{GOPATH}/src/github.com"

@@ -24,3 +24,6 @@ alias tmux="TERM=screen-256color-bce tmux"
 alias python="python3"
 
 alias fd="fd-find"
+
+alias k8s='ruby "$ADWYZE_REPO_HOME/scripts/dev/k8s.rb"'
+

@@ -18,5 +18,4 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 export PATH="/opt/homebrew/opt/ruby@3.2/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
-. "$HOME/.asdf/asdf.sh"
 source $CONFIGS/ubuntu/zsh.ubuntu

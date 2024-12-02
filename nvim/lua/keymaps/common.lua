@@ -31,6 +31,7 @@ return {
       "Toggle formatting status",
     },
     t = { "<cmd>Lspsaga term_toggle<CR>", "Toggle terminal" },
+    a = { "<cmd>AerialToggle!<CR>", "Toggle code outline" }
   },
 
   ["<leader>g"] = {
@@ -104,6 +105,6 @@ return {
           end,
           "List workspace folders",
         },
-      }
+      },
   }
 }

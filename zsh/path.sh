@@ -59,3 +59,6 @@ export PATH="/usr/local/smlnj/bin:$PATH"
 export PATH="/opt/homebrew/bin/python3:$PATH"
 
 export PATH="/Users/vanjarapu.rajasekhar/.cargo/bin:$PATH"
+
+export ADWYZE_REPO_HOME="/home/rajasekhar/Workspace/repos/adwyze"
+

@@ -84,7 +84,6 @@ return {
       },
       { "<leader>tb", "<cmd>Telescope buffers<CR>", desc = "Select from open buffers" },
       { "<leader>tc", "<cmd>Telescope colorscheme<CR>", desc = "Change colorscheme" },
-      { "<leader>td", "<cmd>Telescope diagnostics<CR>", desc = "Diagnostics" },
       { "<leader>tf", "<cmd>Telescope find_files<CR>", desc = "Find file" },
       { "<leader>tg", "<cmd>Telescope git_files<CR>", desc = "Find file in git repo" },
       { "<leader>tk", "<cmd>Telescope keymaps<CR>", desc = "Open keymap window" },

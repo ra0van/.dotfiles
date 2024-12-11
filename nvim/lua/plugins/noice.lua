@@ -1,8 +1,15 @@
 local constants = require("core.constants")
 
 local function nvim_notify_setup()
+  ---@diagnostic disable-next-line:missing-fields
   require("notify").setup({
     background_colour = "#000000",
+    icons = {
+      ERROR = constants.severity_icons[vim.diagnostic.severity.ERROR],
+      WARN = constants.severity_icons[vim.diagnostic.severity.WARN],
+      INFO = constants.severity_icons[vim.diagnostic.severity.INFO],
+      HINT = constants.severity_icons[vim.diagnostic.severity.HINT],
+    },
   })
 end
 
@@ -18,29 +25,20 @@ local function noice_setup()
         filter = { icon = nonicons.get("terminal") .. " ", title = " Shell " },
         lua = { icon = nonicons.get("lua") .. " " },
         help = { icon = nonicons.get("question") .. " " },
-        IncRename = {
-          pattern = "^:%s*IncRename%s+",
-          title = " Rename ",
-          conceal = true,
-          icon = nonicons.get("sync"),
-          opts = {
-            relative = "cursor",
-            size = { min_width = 30 },
-            position = { row = -2, col = 0 },
-          },
-        },
       },
     },
     popupmenu = {
       enabled = true,
-      ---@type 'nui'|'cmp'
-      backend = "nui",
+      backend = "cmp",
     },
     lsp = {
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
         ["vim.lsp.util.stylize_markdown"] = true,
         ["cmp.entry.get_documentation"] = true,
+      },
+      progress = {
+        enabled = false,
       },
     },
     presets = {
@@ -50,8 +48,17 @@ local function noice_setup()
       lsp_doc_border = true, -- add a border to hover docs and signature help
     },
     views = {
+      notify = {
+        replace = true,
+      },
       mini = {
+        timeout = 3000,
+        zindex = 70,
         size = { height = "auto", width = "auto", max_height = 5 },
+        format = { "{title} ", "{message}" },
+        win_options = {
+          winblend = 0,
+        },
       },
       cmdline_popup = {
         border = {
@@ -73,8 +80,69 @@ local function noice_setup()
       {
         filter = {
           event = "msg_show",
-          kind = "",
-          find = "[w]",
+          any = {
+            { find = "^[/?]." }, -- Do not show search pattern if not found
+          },
+        },
+        opts = { skip = true },
+      },
+      {
+        filter = {
+          event = "msg_show",
+          any = {
+            { find = "%d+L, %d+B written" }, -- written to file
+            { find = "; after #%d+" }, -- Redo
+            { find = "; before #%d+" }, -- Undo
+            { find = "^E486: Pattern not found" }, -- Search not found
+            { find = "Hunk %d+ of %d+" }, -- Git signs
+            { find = "%d+ lines <ed %d+ time" }, -- <ed content
+            { find = "%d+ lines >ed %d+ time" }, -- >ed content
+            { find = "%d+ substitutions on %d+ lines" }, -- Substitutions done
+            { find = "%d+ fewer lines" }, -- Multiple lines deleted
+            { find = "%d+ more lines" }, -- Multiple lines pasted
+            { find = "%d+ lines yanked" }, -- Multiple lines yanked
+            { find = "%d+ lines changed" }, -- Multiple lines changed
+            { find = "chore:" }, -- Remove all autocmd chores
+          },
+        },
+        opts = {
+          timeout = 1000,
+        },
+        view = "mini",
+      },
+      {
+        filter = {
+          event = "notify",
+          kind = { "debug", "trace" }, -- Debug and trace notifications
+        },
+        opts = {
+          timeout = 5000,
+        },
+        view = "mini",
+      },
+      -- Treesitter :Inspect output
+      { filter = { event = "msg_show", find = "Treesitter.*- @" }, view = "popup" },
+      { -- Mason
+        filter = {
+          event = "notify",
+          cond = function(msg)
+            return msg.opts and (msg.opts.title or ""):find("mason")
+          end,
+        },
+        view = "mini",
+      },
+      -- nvim-treesitter
+      { filter = { event = "msg_show", find = "^%[nvim%-treesitter%]" }, view = "mini" },
+      { filter = { event = "notify", find = "All parsers are up%-to%-date" }, view = "mini" },
+
+      -- Skip certain notifications
+      {
+        filter = {
+          event = "notify",
+          any = {
+            { find = "No code actions available" }, -- Do not show code actions not available
+            { find = "No information available" }, -- Do not show no hover information available notifications
+          },
         },
         opts = { skip = true },
       },
@@ -84,9 +152,8 @@ end
 
 return {
   "folke/noice.nvim",
-  -- event = "VeryLazy",
+  event = "VeryLazy",
   dependencies = {
-    "MunifTanjim/nui.nvim",
     {
       "rcarriga/nvim-notify",
       config = nvim_notify_setup,

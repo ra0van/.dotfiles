@@ -1,17 +1,22 @@
 local dap_config = function()
   local dap, dapui = require("dap"), require("dapui")
 
-  -- Get current buffer's filetype
-  local function get_current_buf_filetype()
-    return vim.bo[vim.api.nvim_get_current_buf()].filetype
-  end
-
   -- Launch debugging session
   local function launch_debugging_session()
-    local buf_filetype = get_current_buf_filetype()
+    if vim.bo.filetype == "lua" then
+      vim.ui.select({ "Launch the current file", "Launch connection with other debugger" }, {
+        prompt = "Choose debugging method",
+      }, function(choice)
+        if choice == nil then
+          return
+        end
 
-    if buf_filetype == "lua" then
-      require("osv").run_this()
+        if choice == "Launch the current file" then
+          require("osv").run_this()
+        elseif choice == "Launch connection with other debugger" then
+          dap.continue()
+        end
+      end)
     else
       dap.continue()
     end
@@ -19,9 +24,7 @@ local dap_config = function()
 
   -- Restart debugging session
   local function restart_debugging_session()
-    local buf_filetype = get_current_buf_filetype()
-
-    if dap.session() ~= nil and buf_filetype == "lua" then
+    if dap.session() ~= nil and vim.bo.filetype == "lua" then
       dap.terminate()
       launch_debugging_session()
     else
@@ -31,77 +34,40 @@ local dap_config = function()
 
   -- DAP continue session
   local function dap_continue()
-    local buf_filetype = get_current_buf_filetype()
-
-    if buf_filetype == "lua" and dap.session() == nil then
+    if vim.bo.filetype == "lua" and dap.session() == nil then
       launch_debugging_session()
     else
       dap.continue()
     end
   end
 
-  local bufopts = { buffer = bufnr }
-  local wk, lsp_buf = package.loaded["which-key"], vim.lsp.buf
+  vim.keymap.set("n", "<leader>b<C-j>", dap.up, { desc = "Move up the current stacktrace" })
+  vim.keymap.set("n", "<leader>b<C-k>", dap.down, { desc = "Move up the current stacktrace" })
+  vim.keymap.set("n", "<leader>b?", function()
+    dapui.eval({ nil, enter = true })
+  end, {
+    desc = "Show value of variable under cursor/highlight",
+  })
+  vim.keymap.set("n", "<leader>bB", function()
+    dap.set_breakpoint(nil, nil, vim.fn.input("Condition: "))
+  end, {
+    desc = "Set conditional breakpoint",
+  })
+  vim.keymap.set("n", "<leader>bC", dap.run_to_cursor, { desc = "Run till cursor location" })
+  vim.keymap.set("n", "<leader>bb", dap.toggle_breakpoint, { desc = "Toggle breakpoint" })
+  vim.keymap.set("n", "<leader>bc", dap_continue, { desc = "Continue execution" })
+  vim.keymap.set("n", "<leader>bel", function()
+    require("osv").launch({ port = 8086 })
+  end, {
 
-
-  local wk_maps = {
-    {"<leader>b", group = "debugger"},
-
-    -- Session management
-    {"<leader>bs", group = "debugging-session"},
-    {"<leader>bsl", launch_debugging_session(), desc = "Launch debugging session" },
-    {"<leader>bsr", restart_debugging_session(), desc = "Restart current debugging session" },
-    {"<leader>bst",
-      function()
-        dap.terminate()
-      end,
-      desc = "Terminate debugging session",
-    },
-    -- Breakpoint
-    {"<leader>bb",
-      function()
-        dap.toggle_breakpoint()
-      end,
-      desc = "Toggle breakpoint",
-    },
-    {"<leader>bC",
-      function()
-        dap.set_breakpoint(nil, nil, vim.fn.input("Condition: "))
-      end,
-      desc = "Set conditional breakpoint",
-    },
-
-    -- Operation
-    {"<leader>bc", dap_continue, desc = "Continue execution"},
-    {"<leader>bo",
-      function()
-        dap.step_over()
-      end,
-      desc = "Step over"
-    },
-    {"<leader>bi",
-      function()
-        dap.step_into()
-      end,
-      desc = "Step into",
-    },
-    {"<leader>bR",
-      function()
-        dap.run_to_cursor()
-      end,
-      desc = "Run till cursor location",
-    },
-
-    -- Debugger UI
-    {"<leader>bu",
-      function()
-        dapui.toggle()
-      end,
-      desc = "Toggle debugger UI",
-    },
-  }
-  --wk.register(wk_maps, bufopts)
-
+    desc = "Launch neovim debugee instance",
+  })
+  vim.keymap.set("n", "<leader>bi", dap.step_into, { desc = "Step into" })
+  vim.keymap.set("n", "<leader>bo", dap.step_over, { desc = "Step over" })
+  vim.keymap.set("n", "<leader>bsr", restart_debugging_session, { desc = "Re-start debug session" })
+  vim.keymap.set("n", "<leader>bss", launch_debugging_session, { desc = "Start debug session" })
+  vim.keymap.set("n", "<leader>bst", dap.terminate, { desc = "Terminate debug session" })
+  vim.keymap.set("n", "<leader>bu", dapui.toggle, { desc = "Toggle debugger UI" })
 
   require("cmp").setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
     sources = {
@@ -112,6 +78,6 @@ end
 
 return {
   "mfussenegger/nvim-dap",
-  -- event = "LspAttach",
+  event = "LspAttach",
   config = dap_config,
 }

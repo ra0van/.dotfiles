@@ -1,11 +1,12 @@
 return {
+  -- Max filesize limit for certain plugins and/or functionalities
   max_filesize = 1024 * 1024, -- 1 MiB
-  ---@type "tokyonight"|"catppuccin"|"rose-pine"|"material"|"kanagawa|onedark"
-  colorscheme = "onedark",
-  ---@type "tokyonight"|"catppuccin"|"rose-pine"|"material-stealth"|"kanagawa|onedark"
-  statusline_colorscheme = "onedark",
+  ---@type "tokyonight"|"catppuccin"|"rose-pine"|"material"|"kanagawa"|"cyberdream"|"neofusion"
+  colorscheme = "rose-pine",
   ---@type boolean
   transparent_background = true,
+  ---@type boolean
+  is_remote = vim.g.remote_neovim_host and true or false,
   oil = {
     hidden_file_patterns = {
       "^%.git$",
@@ -17,7 +18,7 @@ return {
       "^%.%.$",
     },
   },
-  ignore_buftypes = {
+  temp_filetypes = {
     "TelescopePrompt",
     "checkhealth",
     "gitcommit",
@@ -34,41 +35,53 @@ return {
     "query",
     "svn",
     "terminal",
+    "sagarename",
+    "sagafinder",
+    "gitsigns-blame",
   },
-  treesitter_parsers = {
+  -- These will be auto-installed by treesitter
+  ts_parsers = {
     "bash",
     "c",
-    "comment",
     "cpp",
+    "csv",
+    "diff",
     "dockerfile",
+    "editorconfig",
     "git_config",
     "git_rebase",
     "gitcommit",
     "gitignore",
     "go",
-    "gosum",
     "gomod",
+    "gosum",
+    "gotmpl",
     "gowork",
+    "helm",
+    "html",
+    "hyprlang",
     "ini",
-    "vimdoc",
+    "javascript",
     "json",
     "json5",
     "jsonc",
-    "javascript",
     "lua",
     "make",
     "markdown",
     "markdown_inline",
     "python",
+    "query",
     "regex",
+    "requirements",
     "rust",
     "scala",
     "sql",
-    "typescript",
     "toml",
+    "typescript",
     "vim",
+    "vimdoc",
+    "xml",
     "yaml",
-    "hyprlang",
   },
   formatters = {
     "stylua",
@@ -84,7 +97,6 @@ return {
     "gofumpt",
   },
   linters = {
-    "selene",
     "vulture",
     "markdownlint",
     "shellcheck",
@@ -94,5 +106,8 @@ return {
     "yamllint",
     "sqlfluff",
   },
-  mason_auto_installed = {},
+  tools = {
+    "delve",
+    "debugpy",
+  },
 }

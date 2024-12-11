@@ -5,6 +5,9 @@ return {
     },
     hint = {
       enable = true,
+      arrayIndex = "Disable",
+      semicolon = "Disable",
+      setType = true,
     },
     format = {
       -- stylua runs using conform
@@ -12,6 +15,11 @@ return {
     },
     codeLens = {
       enable = true,
+    },
+    diagnostics = {
+      disable = {
+        "unused-local", -- Covered by selene.
+      },
     },
   },
   workspace = {

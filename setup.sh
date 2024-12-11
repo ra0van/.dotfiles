@@ -10,7 +10,7 @@ ln -nsf "$HOME/base/.dotfiles/nvim" "$HOME/.config/nvim"
 
 mkdir -p "$HOME/.config/alacritty"
 touch "$HOME/.config/alacritty/alacritty.yml"
-ln -nsf "$HOME/base/.dotfiles/alacritty/alacritty.yml" "$HOME/.config/alacritty/alacritty.yml"
+ln -nsf "$HOME/base/.dotfiles/alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
 
 touch "$HOME/.tmux.conf"
 ln -nsf "$HOME/base/.dotfiles/tmux.conf" "$HOME/.tmux.conf"

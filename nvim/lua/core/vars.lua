@@ -2,7 +2,7 @@ return {
   -- Max filesize limit for certain plugins and/or functionalities
   max_filesize = 1024 * 1024, -- 1 MiB
   ---@type "tokyonight"|"catppuccin"|"rose-pine"|"material"|"kanagawa"|"cyberdream"|"neofusion"
-  colorscheme = "rose-pine",
+  colorscheme = "onedark",
   ---@type boolean
   transparent_background = true,
   ---@type boolean

@@ -1,39 +1,18 @@
-local telescope_config = function ()
+local telescope_config = function()
   local telescope = require("telescope")
   local actions = require("telescope.actions")
-  local lga_actions = require("telescope-live-grep-args.actions")
 
   telescope.setup({
-    extensions = {
-      fzf = {
-        fuzzy = true,
-        override_generic_sorter = true,
-        override_file_sorter = true,
-        case_mode = "smart_case",
-      },
-      live_grep_args = {
-        auto_quoting = true, -- enable/disable auto-quoting
-        -- define mappings, e.g.
-        mappings = { -- extend mappings
-          i = {
-            ["<C-k>"] = lga_actions.quote_prompt(),
-            ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-          },
-        },
-        -- ... also accepts theme settings, for example:
-        -- theme = "dropdown", -- use dropdown theme
-        -- theme = { }, -- use own theme spec
-        -- layout_config = { mirror=true }, -- mirror preview pane
-      }
-    },
     defaults = {
+      path_display = {
+        "filename_first",
+      },
       preview = {
         filesize_limit = 0.1,
       },
       initial_mode = "insert",
-      prompt_prefix = " " .. require("nvim-nonicons").get("telescope") .. "  ",
+      prompt_prefix = "   ",
       layout_strategy = "horizontal",
-      path_display = { "absolute" },
       file_ignore_patterns = { ".git/", "node_modules/", ".cache", "*.pdf", "*.zip" },
       results_title = false,
       selection_caret = "  ",
@@ -54,7 +33,7 @@ local telescope_config = function ()
         enable_preview = true,
       },
       find_files = {
-        -- find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--no-require-git" },
+        find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--no-require-git" },
         hidden = true,
       },
       buffers = {
@@ -81,72 +60,55 @@ local telescope_config = function ()
                 require("mini.bufremove").delete(selection.bufnr, force)
               end)
             end,
+            ["<Tab>"] = actions.move_selection_next,
             ["<S-Tab>"] = actions.move_selection_previous,
           },
         },
       },
     },
   })
-  -- Enable telescope fzf native, if installed
-  -- pcall(require('telescope').load_extension, 'fzf')
 
-  local builtin = require('telescope.builtin')
-  vim.keymap.set('n', '<leader>/', function()
-    -- You can pass additional configuration to telescope to change theme, layout, etc.
-    builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-      winblend = 10,
-      previewer = false,
-    })
-  end, { desc = '[/] Fuzzily search in current buffer' })
-
-
-  local built_in = require("telescope.builtin")
   telescope.load_extension("live_grep_args")
-
-  require("which-key").register({
-    ["<leader>t"] = {
-      name = "telescope",
-      b = { built_in.buffers, "[b] Select from open buffers" },
-      -- c = { built_in.colorscheme, "[c] Change colorscheme" },
-      d = { built_in.diagnostics, "[d] Diagnostics" },
-      f = { built_in.find_files, "[f] Find file" },
-      g = { built_in.git_files, "[g] Find file in git repo" },
-      h = { built_in.help_tags, "[h] Find help"},
-      k = { built_in.keymaps, "[k] Open keymap window" },
-      o = { built_in.oldfiles, "[o] Open previously opened files" },
-      -- p = { telescope.extensions.projects.projects, "[p] Open projects window" },
-      r = { built_in.resume, "[r] Resume last telescope operation" },
-      t = { "<cmd>Telescope<CR>", "[t] Open telescope" },
-      c = { built_in.grep_string, "[c] Search current word" },
-      w = { telescope.extensions.live_grep_args.live_grep_args, "[w] Find word" },
-      [":"] = { built_in.command_history, "[:] Show commands executed recently and run them on <CR>" },
-      ["/"] = { built_in.current_buffer_fuzzy_find, "[/] Fuzzy find in the current buffer" },
-    },
-  })
+  telescope.load_extension("fzf")
 end
 
-
-
 return {
-  'nvim-telescope/telescope.nvim',
-  branch = '0.1.x',
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-    {
-      'nvim-telescope/telescope-fzf-native.nvim',
-      build = 'make',
-      cond = function()
-        return vim.fn.executable 'make' == 1
-      end,
+  {
+    "nvim-telescope/telescope.nvim",
+    keys = {
+      { "<leader>t/", "<cmd>Telescope current_buffer_fuzzy_find<CR>", desc = "Fuzzy find in the current buffer" },
+      {
+        "<leader>t:",
+        "<cmd>Telescope command_history<CR>",
+        desc = "Show commands executed recently and run them on <CR>",
+      },
+      { "<leader>tb", "<cmd>Telescope buffers<CR>", desc = "Select from open buffers" },
+      { "<leader>tc", "<cmd>Telescope colorscheme<CR>", desc = "Change colorscheme" },
+      { "<leader>td", "<cmd>Telescope diagnostics<CR>", desc = "Diagnostics" },
+      { "<leader>tf", "<cmd>Telescope find_files<CR>", desc = "Find file" },
+      { "<leader>tg", "<cmd>Telescope git_files<CR>", desc = "Find file in git repo" },
+      { "<leader>tk", "<cmd>Telescope keymaps<CR>", desc = "Open keymap window" },
+      { "<leader>to", "<cmd>Telescope oldfiles<CR>", desc = "Open previously opened files" },
+      { "<leader>tp", "<cmd>Telescope projects<CR>", desc = "Open projects window" },
+      { "<leader>tr", "<cmd>Telescope resume<CR>", desc = "Resume last telescope operation" },
+      { "<leader>ts", "<cmd>Telescope lsp_document_symbols<CR>", desc = "Get LSP symbols from current document" },
+      { "<leader>tt", "<cmd>Telescope<CR>", desc = "Open telescope" },
+      { "<leader>tw", "<cmd>Telescope live_grep_args<CR>", desc = "Find word" },
     },
-    "folke/which-key.nvim",
-    {
-      "nvim-telescope/telescope-live-grep-args.nvim",
-      -- This will not install any breaking changes.
-      -- For major updates, this must be adjusted manually.
-      version = "^1.0.0",
-    },
+    cmd = "Telescope",
+    config = telescope_config,
+    dependencies = {},
   },
-
-  config = telescope_config
+  { "nvim-lua/plenary.nvim" },
+  { "folke/which-key.nvim" },
+  {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "make",
+  },
+  {
+    "nvim-telescope/telescope-live-grep-args.nvim",
+    -- This will not install any breaking changes.
+    -- For major updates, this must be adjusted manually.
+    version = "^1.0.0",
+  },
 }

@@ -57,74 +57,57 @@ local lsp_config = function()
 
     local bufopts = { buffer = bufnr }
     local wk, lsp_buf = package.loaded["which-key"], vim.lsp.buf
-
-
+    
     local wk_maps = {
-      ["<leader>l"] = {
-        name = "LSP",
+      {"<leader>l", group = "LSP"},
+      {"<leader>lh", lsp_buf.hover, desc = "Show symbol hover info"},
 
-        h = { lsp_buf.hover, "Show symbol hover info" },
-        s = {
-          name = "Symbol actions",
+      {"<leader>ls", group = "Symbol actions"},
+      {"<leader>lsa", "<cmd>Lspsaga finder<CR>", desc = "Show all symbol details" },
+      {"<leader>lsc", "<cmd>Lspsaga finder dec<CR>", desc = "Show symbol declaration" },
+      {"<leader>lsd", "<cmd>Lspsaga finder def<CR>", desc = "Show symbol definition" },
+      {"<leader>lsi", "<cmd>Lspsaga finder imp<CR>", desc = "Show symbol implementations" },
+      {"<leader>lsr", "<cmd>Lspsaga finder ref<CR>", desc = "Show symbol references" },
 
-          a = { "<cmd>Lspsaga finder<CR>", "Show all symbol details" },
-          c = { "<cmd>Lspsaga finder dec<CR>", "Show symbol declaration" },
-          d = { "<cmd>Lspsaga finder def<CR>", "Show symbol definition" },
-          i = { "<cmd>Lspsaga finder imp<CR>", "Show symbol implementations" },
-          r = { "<cmd>Lspsaga finder ref<CR>", "Show symbol references" },
-        },
-        g = {
-          name = "Go to definition",
+      {"<leader>lg", group = "Go to definition"},
+      {"<leader>lgd", "<cmd>Lspsaga goto_definition<CR>", desc = "Go to definition" },
+      {"<leader>lgt", "<cmd>Lspsaga goto_type_definition<CR>", desc = "Go to type definition" },
 
-          d = { "<cmd>Lspsaga goto_definition<CR>", "Go to definition" },
-          t = { "<cmd>Lspsaga goto_type_definition<CR>", "Go to type definition" },
-        },
-        p = {
-          name = "Peek definition",
+      {"<leader>lp", group = "Peek definition"},
+      {"<leader>lpd", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek symbol definition" },
+      {"<leader>lpt", "<cmd>Lspsaga peek_type_definition<CR>", desc = "Peek symbol type definition" },
 
-          d = { "<cmd>Lspsaga peek_definition<CR>", "Peek symbol definition" },
-          t = { "<cmd>Lspsaga peek_type_definition<CR>", "Peek symbol type definition" },
-        },
-        c = {
-          name = "Code action + Call hierarchy",
+      {"<leader>lc", group = "Code action + Call hierarchy"},
+      {"<leader>lca", "<cmd>Lspsaga code_action<CR>", desc = "Show possible code actions" },
+      {"<leader>lci", "<cmd>Lspsaga incoming_calls<CR>", desc = "Show all incoming calls" },
+      {"<leader>lco", "<cmd>Lspsaga outgoing_calls<CR>", desc = "Show all outgoing calls" },
 
-          a = { "<cmd>Lspsaga code_action<CR>", "Show possible code actions" },
-          i = { "<cmd>Lspsaga incoming_calls<CR>", "Show all incoming calls" },
-          o = { "<cmd>Lspsaga outgoing_calls<CR>", "Show all outgoing calls" },
-        },
-        d = {
-          name = "Document actions",
-          o = { "<cmd>Lspsaga outline<CR>", "Show document symbol outline" },
-          s = { "<cmd>Telescope lsp_document_symbols<CR>", "Search document symbols" },
-        },
-        e = {
-          name = "Extras",
+      {"<leader>ld", group = "Document actions"},
+      {"<leader>ldo", "<cmd>Lspsaga outline<CR>", desc = "Show document symbol outline" },
+      {"<leader>lds", "<cmd>Telescope lsp_document_symbols<CR>", desc = "Search document symbols" },
 
-          o = { require("lspconfig.ui.lspinfo"), "Display attached, active, and configured LSP servers" },
-          c = { vim.lsp.codelens.run, "Run codelens on the line" },
-        },
-        r = {
-          function()
-            return ":IncRename " .. vim.fn.expand("<cword>")
-          end,
-          "Rename symbol",
-          expr = true,
-        },
-        w = {
-          name = "Workspace actions",
+      {"<leader>le", group  = "Extras"},
+      {"<leader>leo", require("lspconfig.ui.lspinfo"), desc ="Display attached, active, and configured LSP servers" },
+      {"<leader>lec", vim.lsp.codelens.run, desc = "Run codelens on the line" },
 
-          a = { lsp_buf.add_workspace_folder, "Add workspace folder" },
-          r = { lsp_buf.remove_workspace_folder, "Remove workspace folder" },
-          l = {
-            function()
-              vim.notify(vim.inspect(lsp_buf.list_workspace_folders))
-            end,
-            "List workspace folders",
-          },
-        },
+      {"<leader>lr",
+        function ()
+          return ":IncRename " .. vim.fn.expand("<cword>")
+        end,
+        desc = "Rename symbol"
+      },
+
+      {"<leader>lw", group = "Workspace actions"},
+      {"<leader>lwa", lsp_buf.add_workspace_folder, desc = "Add workspace folder" },
+      {"<leader>lwl",
+        function ()
+          vim.notify(vim.inspect(lsp_buf.list_workspace_folders))
+        end,
+        desc = "Remove workspace folder"
       },
     }
-    wk.register(wk_maps, bufopts)
+
+    --wk.register(wk_maps, bufopts)
   end
 
   local capabilities = require("cmp_nvim_lsp").default_capabilities()

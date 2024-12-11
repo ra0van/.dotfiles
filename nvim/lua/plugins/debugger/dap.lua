@@ -40,69 +40,68 @@ local dap_config = function()
     end
   end
 
-  require("which-key").register({
-    ["<leader>b"] = {
-      name = "debugger",
+  local bufopts = { buffer = bufnr }
+  local wk, lsp_buf = package.loaded["which-key"], vim.lsp.buf
 
-      -- Session management
-      s = {
-        name = "debugging-session",
 
-        l = { launch_debugging_session, "Launch debugging session" },
-        r = { restart_debugging_session, "Restart current debugging session" },
-        t = {
-          function()
-            dap.terminate()
-          end,
-          "Terminate debugging session",
-        },
-      },
+  local wk_maps = {
+    {"<leader>b", group = "debugger"},
 
-      -- Breakpoint
-      b = {
-        function()
-          dap.toggle_breakpoint()
-        end,
-        "Toggle breakpoint",
-      },
-      C = {
-        function()
-          dap.set_breakpoint(nil, nil, vim.fn.input("Condition: "))
-        end,
-        "Set conditional breakpoint",
-      },
-
-      -- Operation
-      c = { dap_continue, "Continue execution" },
-      o = {
-        function()
-          dap.step_over()
-        end,
-        "Step over",
-      },
-      i = {
-        function()
-          dap.step_into()
-        end,
-        "Step into",
-      },
-      R = {
-        function()
-          dap.run_to_cursor()
-        end,
-        "Run till cursor location",
-      },
-
-      -- Debugger UI
-      u = {
-        function()
-          dapui.toggle()
-        end,
-        "Toggle debugger UI",
-      },
+    -- Session management
+    {"<leader>bs", group = "debugging-session"},
+    {"<leader>bsl", launch_debugging_session(), desc = "Launch debugging session" },
+    {"<leader>bsr", restart_debugging_session(), desc = "Restart current debugging session" },
+    {"<leader>bst",
+      function()
+        dap.terminate()
+      end,
+      desc = "Terminate debugging session",
     },
-    print "Db"
-  })
+    -- Breakpoint
+    {"<leader>bb",
+      function()
+        dap.toggle_breakpoint()
+      end,
+      desc = "Toggle breakpoint",
+    },
+    {"<leader>bC",
+      function()
+        dap.set_breakpoint(nil, nil, vim.fn.input("Condition: "))
+      end,
+      desc = "Set conditional breakpoint",
+    },
+
+    -- Operation
+    {"<leader>bc", dap_continue, desc = "Continue execution"},
+    {"<leader>bo",
+      function()
+        dap.step_over()
+      end,
+      desc = "Step over"
+    },
+    {"<leader>bi",
+      function()
+        dap.step_into()
+      end,
+      desc = "Step into",
+    },
+    {"<leader>bR",
+      function()
+        dap.run_to_cursor()
+      end,
+      desc = "Run till cursor location",
+    },
+
+    -- Debugger UI
+    {"<leader>bu",
+      function()
+        dapui.toggle()
+      end,
+      desc = "Toggle debugger UI",
+    },
+  }
+  --wk.register(wk_maps, bufopts)
+
 
   require("cmp").setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
     sources = {

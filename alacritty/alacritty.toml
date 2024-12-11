@@ -1,61 +1,61 @@
 live_config_reload = true
 
 [colors]
-draw_bold_text_with_bright_colors = true
-
-# [colors.bright]
-# black = "#686f9a"
-# blue = "#00a3cc"
-# cyan = "#7a5ccc"
-# green = "#5ccc96"
-# magenta = "#f2ce00"
-# red = "#e33400"
-# white = "#f0f1ce"
-# yellow = "#b3a1e6"
-
-# [colors.normal]
-# black = "#000000"
-# blue = "#00a3cc"
-# cyan = "#7a5ccc"
-# green = "#5ccc96"
-# magenta = "#f2ce00"
-# red = "#e33400"
-# white = "#686f9a"
-# yellow = "#b3a1e6"
-
-# [colors.primary]
-# background = "#0f111b"
-# foreground = "#ecf0c1"
-
+draw_bold_text_with_bright_colors = false
 
 [colors.bright]
-black = "#949494"
-blue = "#74b2ff"
-cyan = "#85dc85"
-green = "#36c692"
-magenta = "#ae81ff"
-red = "#ff5189"
-white = "#e4e4e4"
-yellow = "#c6c684"
-
-[colors.footer_bar]
-background = "#e3c78a"
-foreground = "#080808"
+black = "#686f9a"
+blue = "#00a3cc"
+cyan = "#7a5ccc"
+green = "#5ccc96"
+magenta = "#f2ce00"
+red = "#e33400"
+white = "#f0f1ce"
+yellow = "#b3a1e6"
 
 [colors.normal]
-black = "#323437"
-blue = "#80a0ff"
-cyan = "#79dac8"
-green = "#8cc85f"
-magenta = "#cf87e8"
-red = "#ff5454"
-white = "#c6c6c6"
-yellow = "#e3c78a"
+black = "#000000"
+blue = "#00a3cc"
+cyan = "#7a5ccc"
+green = "#5ccc96"
+magenta = "#f2ce00"
+red = "#e33400"
+white = "#686f9a"
+yellow = "#b3a1e6"
 
 [colors.primary]
-background = "#080808"
-bright_foreground = "#eeeeee"
-foreground = "#bdbdbd"
+background = "#0f111b"
+foreground = "#ecf0c1"
+
+
+# [colors.bright]
+# black = "#949494"
+# blue = "#74b2ff"
+# cyan = "#85dc85"
+# green = "#36c692"
+# magenta = "#ae81ff"
+# red = "#ff5189"
+# white = "#e4e4e4"
+# yellow = "#c6c684"
+
+# [colors.footer_bar]
+# background = "#e3c78a"
+# foreground = "#080808"
+
+# [colors.normal]
+# black = "#323437"
+# blue = "#80a0ff"
+# cyan = "#79dac8"
+# green = "#8cc85f"
+# magenta = "#cf87e8"
+# red = "#ff5454"
+# white = "#c6c6c6"
+# yellow = "#e3c78a"
+
+# [colors.primary]
+# background = "#080808"
+# bright_foreground = "#eeeeee"
+# foreground = "#bdbdbd"
 
 [colors.search.matches]
 background = "#f09479"

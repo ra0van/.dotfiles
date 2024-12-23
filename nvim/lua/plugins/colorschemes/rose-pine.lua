@@ -9,14 +9,14 @@ local function rose_pine_config()
 
   require("rose-pine").setup({
     dim_inactive_windows = not is_transparent,
-    variant = "moon",
+    variant = "auto",
     extend_background_behind_borders = true,
     styles = {
       bold = true,
       italic = true,
       transparency = is_transparent,
     },
-    dark_variant = "moon",
+    dark_variant = "main",
     highlight_groups = {
       IlluminatedWordText = { bg = p.highlight_med },
       IlluminatedWordRead = { bg = p.highlight_med },
